@@ -31,21 +31,21 @@ ActiveRecord::Schema.define(version: 20160620003642) do
   create_table "elements", force: :cascade do |t|
     t.text     "element_type"
     t.text     "element_data"
-    t.integer  "artist_id"
+    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
-    t.integer  "artist_id"
+    t.integer  "user_id"
     t.integer  "design_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "artist_id"
+    t.integer  "user_id"
     t.integer  "design_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
