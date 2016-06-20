@@ -13,8 +13,8 @@ class DesignsController < ApplicationController
   end
 
   def app
-    @current_user
     @current_design = params[:id]
+    @current_user = User.find_by( :id => session[:user_id] )
   end
 
 

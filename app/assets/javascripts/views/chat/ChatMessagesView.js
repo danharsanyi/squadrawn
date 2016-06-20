@@ -5,6 +5,21 @@ app.ChatMessagesView = Backbone.View.extend({
 
   render: function(){
     var chatMessagesTemplate = $("#chatMessagesTemplate").html();
-    this.$el.html(chatMessagesTemplate);
-  }
+    var currentDesign = parseInt(app.currentDesignID);
+    var existingMessages = app.messages.where({design_id: currentDesign});
+    _.each(existingMessages, function(message){
+      var messageView = new app.MessageView({
+          model: message
+        });
+        messageView.render();
+        });
+    this.updateScroll();
+  },
+
+  updateScroll: function(){
+    // $("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+    $('#chatMessages').stop().animate({
+      scrollTop: $('#chatMessages')[0].scrollHeight
+    }, 200);
+  },
 });

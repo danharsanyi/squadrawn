@@ -4,7 +4,8 @@ app.Message = Backbone.Model.extend({
   urlRoot: "/messages",
 
   defaults: {
-    content: "blank message"
+    content: "blank message",
+    user: ""
   },
 
   initialize: function () {

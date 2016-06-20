@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<%= flash[:success] %>
+
+<% if @current_user %>
+  <p>Currently logged in as: <%= @current_user.name %></p>
+<% end %>
+
+
 <%= yield %>
 
 </body>

@@ -25,8 +25,12 @@ app.ChatInputView = Backbone.View.extend({
       console.log("A message should be created");
       var message = new app.Message();
       var userMessageInput = this.$el.find("textarea").val();
+      var currentDesign = parseInt(app.currentDesignID);
+      var currentUser = app.currentUser.id;
       message.set({
-        content: userMessageInput
+        content: userMessageInput,
+        user_id: currentUser,
+        design_id: currentDesign
       });
       message.save();
       app.messages.add(message);
