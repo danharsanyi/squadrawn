@@ -20,4 +20,21 @@
   width: 25vw;
   height: 90vh;
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+#chatInput {
+width: inherit;
+height: 150px;
+border: 1px solid black;
+}
+
+#chatMessages {
+  width: inherit;
+  height: inherit;
+}
+
+#chatInputForm {
+  width: 98%;
 }

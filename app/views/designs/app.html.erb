@@ -16,7 +16,7 @@
   <div class="container">
       <div id="elementsContainer">Elements go here</div>
       <div id="designContainer">Designs go here</div>
-      <div id="chatContainer">Chatroom go here</div>
+      <div id="chatContainer"></div>
 
   </div>
 </script>
@@ -40,4 +40,16 @@
 
 <script id="designViewTemplate" type="html/template"></script>
 
-<script id="chatViewTemplate" type="html/template"></script>
+<script id="chatViewTemplate" type="html/template">
+    <div id="chatMessages">All messages go here</div>
+    <div id="chatInput">Message input form goes here</div>
+</script>
+
+<script id="chatMessagesTemplate" type="html/template">
+  <p>All messages go here FROM TEMPLATE</p>
+</script>
+
+<script id="chatInputFormTemplate" type="html/template">
+    <textarea type="text" placeholder="Type message" id="chatInputForm"></textarea>
+    <button>Submit</button>
+</script>

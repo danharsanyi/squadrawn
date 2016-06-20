@@ -6,5 +6,11 @@ app.ChatView = Backbone.View.extend({
   render: function(){
     var chatView = $("#chatViewTemplate").html();
     this.$el.html(chatView);
+
+    var chatInputView = new app.ChatInputView();
+    chatInputView.render();
+
+    var chatMessagesView = new app.ChatMessagesView();
+    chatMessagesView.render();
   }
 });
