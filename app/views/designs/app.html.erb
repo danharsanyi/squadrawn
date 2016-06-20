@@ -43,12 +43,18 @@
 </script>
 
 <script id="elementItemView" type="html/template">
-    <div class="elementItemType">
-        <div class="elementItemCircle">
+    <div class="elementItemContainer">
+        <div class="elementItemType">
+            <div class="elementItemCircle">
+            </div>
         </div>
+        <div class="elementItemImage">
+                <div class="elementItemImageInner">
+                    <img src="<%%= image %>" />
+                </div>
+        </div>
+        <div class="elementItemTitle"> <%%= title %> </div>
     </div>
-    <div class="elementItemImage"> <img src="<%%= image %>" />  </div>
-    <div class="elementItemTitle"> <%%= title %> </div>
 </script>
 
 <script id="designViewTemplate" type="html/template"></script>

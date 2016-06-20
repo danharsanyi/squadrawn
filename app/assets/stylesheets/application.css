@@ -38,3 +38,81 @@ border: 1px solid black;
 #chatInputForm {
   width: 98%;
 }
+
+/*
+############################################################################
+ELEMENT VIEW ###############################################################
+############################################################################
+*/
+
+#elementsContainer * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+#elementsContainer ul {
+
+}
+
+#elementListTemplate {
+
+}
+
+#elementsList ul {
+    list-style-type: none;
+
+}
+
+
+
+#elementsList ul li {
+    width: 50%;
+    height: 120px;
+    float: left;
+    position: relative;
+
+}
+
+#elementsList ul li .elementItemContainer {
+    padding: 10px;
+    margin: 10px;
+    border-bottom: 1px solid black;
+}
+
+.elementItemType {
+
+}
+
+.elementItemType .elementItemCircle {
+    border-radius: 500px;
+    width: 10px;
+    height: 10px;
+    background-color: #FE890A;
+    margin: 10px;
+}
+
+.elementItemImage {
+    text-align: center;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.elementItemImage .elementItemImageInner {
+    width: 70px;
+    height: 70px;
+}
+
+.elementItemImage img {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.elementItemTitle {
+    font-size: 12px;
+    padding: 5px 0px 5px 0px;
+}
