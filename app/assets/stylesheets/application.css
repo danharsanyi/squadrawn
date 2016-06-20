@@ -60,12 +60,55 @@ ELEMENT VIEW ###############################################################
 
 }
 
-#elementsList ul {
+
+
+#elementsMenu {
+
+}
+
+#elementsMenu ul {
+    display: flex;
     list-style-type: none;
+}
+
+#elementsMenu ul li {
+    flex: 1;
+    padding: 10px;
+
+}
+
+#elementsMenu ul li .typeSymbolContainer {
+    text-align: center;
+
+}
+
+#elementsMenu ul li .typeSymbolContainer span {
+    width: 10px;
+    height: 10px;
+    background-color: #FE890A;
+    display: block;
+    border-radius: 100px;
+
+}
+
+#elementsMenu ul li a {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    padding: 4px 0px 8px 0px;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
 
 }
 
 
+
+
+
+
+#elementsList ul {
+    list-style-type: none;
+}
 
 #elementsList ul li {
     width: 50%;
