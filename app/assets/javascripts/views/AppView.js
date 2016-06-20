@@ -7,8 +7,8 @@ app.AppView = Backbone.View.extend({
     var appViewTemplate = $("#appViewTemplate").html();
     this.$el.html(appViewTemplate);
 
-    var elementView = new app.ElementView();
-    elementView.render();
+    var elementsView = new app.ElementsView();
+    elementsView.render();
 
     var designView = new app.DesignView();
     designView.render();
