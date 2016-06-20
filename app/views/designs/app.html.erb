@@ -1,0 +1,28 @@
+<div id="main">
+  App will go here
+</div>
+
+<script>
+  var app = app || {};
+  app.currentUser = <%= @current_user.to_json.html_safe %>;
+  app.currentDesignID = <%= @current_design.to_json.html_safe %>;
+</script>
+
+<script id="appViewTemplate" type="html/template">
+      <hr>
+        App View Template goes here
+      <hr>
+
+  <div class="container">
+      <div id="elementsContainer">Elements go here</div>
+      <div id="designContainer">Designs go here</div>
+      <div id="chatContainer">Chatroom go here</div>
+
+  </div>
+</script>
+
+<script id="elementsViewTemplate" type="html/template"></script>
+
+<script id="designViewTemplate" type="html/template"></script>
+
+<script id="chatViewTemplate" type="html/template"></script>

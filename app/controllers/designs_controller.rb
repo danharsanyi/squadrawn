@@ -12,6 +12,12 @@ class DesignsController < ApplicationController
   def show
   end
 
+  def app
+    @current_user
+    @current_design = params[:id]
+  end
+
+
   # GET /designs/new
   def new
     @design = Design.new
