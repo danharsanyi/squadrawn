@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.Messages = Backbone.Model.extend({
+app.Messages = Backbone.Collection.extend({
   url: '/messages',
 
   model: app.Message,
@@ -9,7 +9,10 @@ app.Messages = Backbone.Model.extend({
     console.log('initialized messages collection');
 
     this.on('add', function (message) {
-      console.log('you added ', message);
+      var messageView = new app.MessageView({
+        model: message
+      });
+      messageView.render();
     });
   }
 
