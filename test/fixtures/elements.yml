@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  element_type: MyText
+  element_data: MyText
+
+two:
+  element_type: MyText
+  element_data: MyText

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Elements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element type</th>
+      <th>Element data</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @elements.each do |element| %>
+      <tr>
+        <td><%= element.element_type %></td>
+        <td><%= element.element_data %></td>
+        <td><%= link_to 'Show', element %></td>
+        <td><%= link_to 'Edit', edit_element_path(element) %></td>
+        <td><%= link_to 'Destroy', element, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Element', new_element_path %>

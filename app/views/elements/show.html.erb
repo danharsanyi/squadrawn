@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Element type:</strong>
+  <%= @element.element_type %>
+</p>
+
+<p>
+  <strong>Element data:</strong>
+  <%= @element.element_data %>
+</p>
+
+<%= link_to 'Edit', edit_element_path(@element) %> |
+<%= link_to 'Back', elements_path %>
