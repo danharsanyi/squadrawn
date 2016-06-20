@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.Message = Backbone.Model.extend({
-  urlRoot: '/designs',
+  urlRoot: '/messages',
 
   defaults: {
     content: "blank message"
