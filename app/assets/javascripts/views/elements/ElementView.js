@@ -2,9 +2,17 @@ var app = app || {};
 
 app.ElementView = Backbone.View.extend({
   tagName: 'li',
-  render: function(element){
-      console.log('single element view initialised', element)
-      this.$el.html( element.element_data );
-      this.$el.appendTo("#elementsList ul");
+  render: function(elementObj){
+
+      var element = JSON.parse(elementObj.element_data);
+
+
+
+      var elementTemplate = $('#elementItemView').html();
+      var _elementTemplate = _.template(elementTemplate)
+      var elementWithData = _elementTemplate({title: element.name, image: element.value.url})
+
+      this.$el.html(elementWithData);
+      this.$el.appendTo('#elementsList ul');
   }
 });

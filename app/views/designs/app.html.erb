@@ -33,13 +33,22 @@
         <li> <a href="#"> All </a> </li>
         <li> <a href="#"> Images </a> </li>
         <li> <a href="#"> Text </a> </li>
-        <li> <a href="#"> Shapes </a> </li> 
+        <li> <a href="#"> Shapes </a> </li>
     </ul>
 </script>
 
 <script id="elementListTemplate" type="html/template">
     <ul>
     </ul>
+</script>
+
+<script id="elementItemView" type="html/template">
+    <div class="elementItemType">
+        <div class="elementItemCircle">
+        </div>
+    </div>
+    <div class="elementItemImage"> <img src="<%%= image %>" />  </div>
+    <div class="elementItemTitle"> <%%= title %> </div>
 </script>
 
 <script id="designViewTemplate" type="html/template"></script>

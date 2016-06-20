@@ -1,3 +1,8 @@
+// _.templateSettings = {
+//     interpolate: /\{\{\=(.+?)\}\}/g,
+//     evaluate: /\{\{(.+?)\}\}/g
+// };
+
 app.elements = new app.Elements();
 app.designs = new app.Designs();
 app.messages = new app.Messages();
