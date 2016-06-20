@@ -1,21 +1,23 @@
 .container {
   display: flex;
+  margin: auto;
 }
 
 #elementsContainer {
-  width: 20vw;
+  width: 25vw;
   height: 90vh;
   border: 2px solid black;
 }
 
 #designContainer {
-  width: 40vw;
+  width: 50vw;
   height: 90vh;
   border: 2px solid black;
+  overflow: hidden;
 }
 
 #chatContainer {
-  width: 20vw;
+  width: 25vw;
   height: 90vh;
   border: 2px solid black;
 }
