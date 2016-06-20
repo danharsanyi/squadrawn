@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'designs' %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Designs</h1>
@@ -15,7 +17,7 @@
     <% @designs.each do |design| %>
       <tr>
         <td><%= design.canvas_data %></td>
-        <td><%= design.url %></td>
+        <td><%= link_to(image_tag(design.url, :class => "thumbnail" ), design_path(design)) %></td>
         <td><%= link_to 'Show', design %></td>
         <td><%= link_to 'Edit', edit_design_path(design) %></td>
         <td><%= link_to 'Destroy', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>

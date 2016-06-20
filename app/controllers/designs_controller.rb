@@ -28,6 +28,7 @@ class DesignsController < ApplicationController
 
     respond_to do |format|
       if @design.save
+        DesignsUsers.create( {design_id: @design.id, user_id: session[:user_id]} )
         format.html { redirect_to @design, notice: 'Design was successfully created.' }
         format.json { render :show, status: :created, location: @design }
       else

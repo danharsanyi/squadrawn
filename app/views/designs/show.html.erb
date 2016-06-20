@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'designs' %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -6,8 +8,17 @@
 </p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @design.url %>
+  <strong>Image:</strong>
+  <%= image_tag( @design.url, :class => 'feature') %>
+</p>
+
+<p>
+  <strong>Designers:</strong>
+  <% @design.users.each do |u| %>
+    <%= u.name %>
+  <% end %>
+
+
 </p>
 
 <%= link_to 'Edit', edit_design_path(@design) %> |
