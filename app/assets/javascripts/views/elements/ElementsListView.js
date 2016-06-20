@@ -1,3 +1,8 @@
 var app = app || {};
 
-app.ElementListView = Backbone.View.extend({})
+app.ElementsListView = Backbone.View.extend({
+    el: "#elementList",
+    render: function() {
+        console.log('element list view initialised');
+    }
+})
