@@ -33,11 +33,23 @@ border: 1px solid black;
 #chatMessages {
   width: inherit;
   height: inherit;
+  overflow-y: scroll;
 }
 
 #chatInputForm {
   width: 98%;
 }
+
+.myMessage {
+  color: blue;
+  text-align: right;
+}
+
+.otherMessage {
+  color: grey;
+}
+
+
 
 /*
 ############################################################################
@@ -158,4 +170,3 @@ ELEMENT VIEW ###############################################################
 .elementItemTitle {
     font-size: 12px;
     padding: 5px 0px 5px 0px;
-}
