@@ -3,7 +3,7 @@ var app = app ||{};
 app.ChatInputView = Backbone.View.extend({
   events: {
     'click button': 'submitMessage',
-    'keydown textarea': 'checkForEnter'
+    'keydown input': 'checkForEnter'
   },
 
   checkForEnter: function( event ){
@@ -24,7 +24,7 @@ app.ChatInputView = Backbone.View.extend({
   submitMessage: function(){
       console.log("A message should be created");
       var message = new app.Message();
-      var userMessageInput = this.$el.find("textarea").val();
+      var userMessageInput = this.$el.find("input").val();
       var currentDesign = parseInt(app.currentDesignID);
       var currentUser = app.currentUser.id;
       message.set({
@@ -34,7 +34,7 @@ app.ChatInputView = Backbone.View.extend({
       });
       message.save();
       app.messages.add(message);
-      this.$el.find("textarea").val('').focus();
+      this.$el.find("input").val('').focus();
       console.log(message);
   }
 });
