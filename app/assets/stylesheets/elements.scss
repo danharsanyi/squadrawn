@@ -8,6 +8,8 @@ ELEMENT VIEW ###############################################################
 ############################################################################
 */
 
+// GLOBAL
+
 #elementsContainer * {
     margin: 0;
     padding: 0;
@@ -15,14 +17,31 @@ ELEMENT VIEW ###############################################################
     font-family: arial;
 }
 
+// CONTAINERS ******************************************************************
+
 #elementsContainer ul {
 
 }
 
 #elementListTemplate {
-
+    display: flex;
 }
 
+#elementsMenu {
+    flex: 0;
+}
+
+#elementsList {
+    flex-grow: 1;
+    overflow: auto;
+    max-height: 300px;
+}
+
+#elementsAdd {
+    flex: 0;
+}
+
+// MENU ************************************************************************
 
 
 #elementsMenu {
@@ -64,10 +83,7 @@ ELEMENT VIEW ###############################################################
 
 }
 
-
-
-
-
+// LIST ************************************************************************
 
 #elementsList ul {
     list-style-type: none;
@@ -121,4 +137,14 @@ ELEMENT VIEW ###############################################################
 .elementItemTitle {
     font-size: 12px;
     padding: 5px 0px 5px 0px;
+}
+
+// ADD *************************************************************************
+
+#elementsAdd {
+
+}
+
+#elementsAdd div {
+
 }

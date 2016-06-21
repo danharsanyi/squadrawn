@@ -1,17 +1,8 @@
 var app = app || {};
 
-app.AddElementView = Backbone.View.extend({
-    el: "#elementsList",
+app.AddElementsView = Backbone.View.extend({
+    el: "#elementsAdd",
     render: function() {
-        console.log('element list view initialised');
-        var elementListTemplate = $("#elementListTemplate").html();
-        this.$el.html(elementListTemplate);
-
-        var currentElements = app.elements.toJSON();
-
-        currentElements.forEach(function (element) {
-            var currentElementItem = new app.ElementView();
-            currentElementItem.render(element);
-        });
+        this.$el.html('<div id="addElementButton"> Add Custom Element</div>');
     }
 });
