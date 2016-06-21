@@ -9,7 +9,7 @@ class ElementsController < ApplicationController
 
   # GET /elements/1
   # GET /elements/1.json
-  def show
+  def show    
   end
 
   # GET /elements/new

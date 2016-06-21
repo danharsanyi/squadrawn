@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Squadrawn</title>
+  <%= stylesheet_link_tag   "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "http://localhost:9292/faye.js" %>
@@ -9,7 +10,14 @@
 </head>
 <body>
 
-<%= flash[:success] %>
+<nav>
+  <% if @current_user %>
+        <%= link_to "Logout", logout_path, :method => :delete %>
+        <%= link_to "Edit Profile", edit_user_path(@current_user) %>
+        <%= link_to "View Profile", user_path(@current_user) %>
+        <%= link_to "Create New Design", designs_new_path %>
+      <% end %>
+</nav>
 
 <% if @current_user %>
   <p>Currently logged in as: <%= @current_user.name %></p>

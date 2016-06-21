@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( designs.css )
 Rails.application.config.assets.precompile += %w( elements.css )
+Rails.application.config.assets.precompile += %w( sessions.css )
+Rails.application.config.assets.precompile += %w( users.css )

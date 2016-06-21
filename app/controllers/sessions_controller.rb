@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       if @current_user.present? && @current_user.authenticate( params[:password] )
         session[:user_id] = @current_user.id
         flash[:success] = "Successfully logged in"
-        redirect_to root_path
+        redirect_to designs_path
       else
         flash[:error] = "Invalid email or password"
         redirect_to login_path
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   private
     def authenticate
-      redirect_to root_path if @current_user
+      redirect_to designs_path if @current_user
     end
 
 end

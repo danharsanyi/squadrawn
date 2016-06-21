@@ -5,6 +5,10 @@ class DesignsController < ApplicationController
   # GET /designs.json
   def index
     @designs = Design.all
+
+    if !@current_user
+      redirect_to login_path
+    end
   end
 
   # GET /designs/1

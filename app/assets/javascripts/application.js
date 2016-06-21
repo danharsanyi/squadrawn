@@ -64,8 +64,5 @@ $(function(){
         paper.project.activeLayer.removeChildren();
         project.importJSON(data);
         paper.view.draw();
-
-
-    })
-
+    });
 });

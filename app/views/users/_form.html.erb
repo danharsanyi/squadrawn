@@ -12,30 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_area :email %>
+    <%= f.email_field :email, :class => "form-control", :placeholder => "Email" %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_area :name %>
+    <%= f.text_field :name, :class => "form-control", :placeholder => "Name" %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Confirm password" %>
   </div>
+
   <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_area :image %>
+    <%= f.text_area :image, :class => "form-control", :placeholder => "Profile Image URL" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <button type="submit" class="btn btn-default">Sign Up!</button>
   </div>
 <% end %>
