@@ -13,6 +13,7 @@ app.Messages = Backbone.Collection.extend({
         model: message
       });
       messageView.render();
+      updateScroll();
     });
   }
 

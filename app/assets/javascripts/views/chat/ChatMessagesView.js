@@ -13,13 +13,6 @@ app.ChatMessagesView = Backbone.View.extend({
         });
         messageView.render();
         });
-    this.updateScroll();
-  },
-
-  updateScroll: function(){
-    // $("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
-    $('#chatMessages').stop().animate({
-      scrollTop: $('#chatMessages')[0].scrollHeight
-    }, 200);
+    updateScroll();
   },
 });
