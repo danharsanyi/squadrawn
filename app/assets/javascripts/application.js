@@ -23,3 +23,24 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+$(function(){
+  var faye = new Faye.Client('http://localhost:9292/faye');
+  faye.subscribe('/designs/1', function(data){
+    var currentMessage = new app.Message();
+
+    currentMessage.set({
+      content: data.content,
+      user: {
+        name: data.user.name
+      }
+    });
+
+    var messageView = new app.MessageView({
+      model: currentMessage,
+    });
+
+    messageView.render();
+    updateScroll();
+  });
+});

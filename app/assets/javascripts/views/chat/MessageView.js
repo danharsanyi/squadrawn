@@ -10,9 +10,9 @@ app.MessageView = Backbone.View.extend({
     var postTime = this.model.get("created_at");
     postTime = moment(postTime).fromNow();
 
-    if (posterName === undefined) {
-        posterName = app.currentUser.name;
-    }
+    // if (posterName === undefined) {
+    //     posterName = app.currentUser.name;
+    // }
 
     var $p = $("<p>");
     $p.html(posterName + ": ");

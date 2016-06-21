@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Using faye for websockets
 gem 'faye'
+gem 'thin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
