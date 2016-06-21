@@ -42,7 +42,10 @@ padding-bottom: 2px;
   align-self: center;
   border: 2px solid grey;
   border-radius: 2px;
+}
 
+input:focus{
+  outline: none;
 }
 
 #chatMessages {
