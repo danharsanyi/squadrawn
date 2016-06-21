@@ -23,45 +23,56 @@ function getCursorMode() {
   };
 }
 
+function switchCursor() {
+    getCursorMode();
+    // Deselect items when changing from select mode
+    if (!cursorMode.select) {
+      _.each(project.selectedItems, function (s) {
+        s.selected = false;
+      });
+    }
+}
+
 function deselectAll() {
   _.each(project.selectedItems, function(l){
     l.selected = false;
   });
 }
 
-function drawPoints(strokeWidth, strokeColor, strokePoints) {
-      var newPath = new Path();
+function saveDesign() {
+  var designID = app.designs.get(app.currentDesignID);
+  var designJSON = saveCanvas();
+  designID.set("canvas_data", designJSON);
+  designID.save(null, {
+    success: function (model, response) {
+        alert("Design Saved");
+    }});
+}
 
-      if(strokeColor === 111) {
-        var strCol = "#000";
-      } else if(strokeColor === 222) {
-        var strCol = "#fff";
-      } else {
-        var strCol = new HsbColor(strokeColor, 1,1);
-      }
+function loadCanvas() {
+  project.importJSON(app.designs.get(app.currentDesignID).get("canvas_data"));
+  paper.view.draw();
+}
 
-      newPath.strokeColor = strCol;
-      newPath.strokeWidth = strokeWidth;
-      newPath.strokeCap = 'round';
-
-      for(var i=0, len=strokePoints.length; i<len; i++){
-        var _s = strokePoints[i].split('|');
-        newPath.add(new Point(parseInt(_s[0]), parseInt(_s[1])));
-      }
-
-      newPath.closed = false;
-      group.addChild(newPath);
-      paper.view.draw();
-  }
+// Removes the last line drawn from the canvas, and removes it from the lines array.
+function undo(){
+    _.last(lines).remove();
+    lines.pop();
+}
 
 
 
 // GLOBAL VARIABLES
 function initializePaper() {
-  console.log("paperScript.js loaded");
+  console.log("paperScript initialized");
   paper.setup('myCanvas');
   paper.install(window);
+  loadCanvas();
   getCursorMode();
+  $("#undoButton").click(undo);
+  $(".cursorRadio").click(switchCursor);
+  $("#saveButton").click(saveDesign);
+
   // var group = new Group();
 
 
@@ -78,24 +89,9 @@ function initializePaper() {
     });
 
 
-    function switchCursor() {
-        getCursorMode();
-        // Deselect items when changing from select mode
-        if (!cursorMode.select) {
-          _.each(project.selectedItems, function (s) {
-            s.selected = false;
-          });
-        }
-    }
-    $(".cursorRadio").click(switchCursor);
 
 
-    // Removes the last line drawn from the canvas, and removes it from the lines array.
-    function undo(){
-        _.last(lines).remove();
-        lines.pop();
-    }
-    $("#undoButton").click(undo);
+
 
 
     // Grabs the canvas and turns it into a PNG
