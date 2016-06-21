@@ -28,7 +28,7 @@ $(function(){
       var faye = new Faye.Client('http://localhost:9292/faye');
       var currentDesign = parseInt(app.currentDesignID);
       var url = '/designs/'+currentDesign;
-      
+
       faye.subscribe(url, function(data){
 
         if (data.user.name === app.currentUser.name) {
@@ -51,5 +51,21 @@ $(function(){
           messageView.render();
           updateScroll();
         }
-  });
+    });
+
+    // current design
+    var canvasChannel = '/canvas/' + currentDesign;
+
+    faye.subscribe(canvasChannel, function(data) {
+        console.log('data from ', canvasChannel, ' recieved ', data);
+
+        // GO RE-RENDER OVER data
+        // WITH data which is - prject.exportJSON
+        paper.project.activeLayer.removeChildren();
+        project.importJSON(data);
+        paper.view.draw();
+
+
+    })
+
 });
