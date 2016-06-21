@@ -108,7 +108,7 @@ ELEMENT VIEW ###############################################################
 #elementsList ul li .elementItemContainer {
     padding: 10px;
     margin: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ccc;
 }
 
 .elementItemType {
@@ -159,5 +159,5 @@ ELEMENT VIEW ###############################################################
 
 #elementsAdd div:hover {
     background: rgb(172, 172, 172);
-    cursor: pointer; 
+    cursor: pointer;
 }
