@@ -30,12 +30,31 @@
 
 <script id="elementsMenuTemplate"  type="html/template">
     <ul>
+        <li> <div class="typeSymbolContainer"> <span class="typeSymbol"></span> </div> <a href="#"> All </a>  </li>
+        <li> <div class="typeSymbolContainer"> <span class="typeSymbol"></span> </div> <a href="#"> Images </a>  </li>
+        <li> <div class="typeSymbolContainer"> <span class="typeSymbol"></span> </div> <a href="#"> Text </a>  </li>
+        <li> <div class="typeSymbolContainer"> <span class="typeSymbol"></span> </div> <a href="#"> Shapes </a>  </li>
     </ul>
 </script>
 
 <script id="elementListTemplate" type="html/template">
     <ul>
     </ul>
+</script>
+
+<script id="elementItemView" type="html/template">
+    <div class="elementItemContainer">
+        <div class="elementItemType">
+            <div class="elementItemCircle">
+            </div>
+        </div>
+        <div class="elementItemImage">
+                <div class="elementItemImageInner">
+                    <img src="<%%= image %>" />
+                </div>
+        </div>
+        <div class="elementItemTitle"> <%%= title %> </div>
+    </div>
 </script>
 
 <script id="designViewTemplate" type="html/template"></script>
