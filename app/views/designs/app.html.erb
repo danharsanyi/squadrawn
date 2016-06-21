@@ -59,8 +59,26 @@
     </div>
 </script>
 
-<script id="designViewTemplate" type="html/template"></script>
+<!-- DESIGN AREA -->
+<script id="toolsViewTemplate" type="html/template">
+  <input class = "cursorRadio" id ="brushRadio" type="radio" name="cursorMode" value="brush" checked> Brush<br>
+ <input class = "cursorRadio" id = "selectRadio" type="radio" name="cursorMode" value="select"> Select<br>
+ <input id="brushSize" type = "text" value="10" > Brush Size </br>
+ <input id="colorPicker" value="000000" class="jscolor {width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}"><br/>
+   <button id = "undoButton"> Undo</button>
+  <button id = "exportButton"> Export to PNG </button>
 
+</script>
+
+<script id="designViewTemplate" type="html/template">
+
+<div id = "toolsContainer"> </div>
+<canvas id="myCanvas" resize></canvas>
+</script>
+
+
+
+<!-- CHAT AREA -->
 <script id="chatViewTemplate" type="html/template">
     <div id="chatMessages"></div>
     <div id="chatInput">Message input form goes here</div>

@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require jscolor.js
+//= require paper-full.js
 //= require moments
 //= require scripts
 //= require_tree ./models
