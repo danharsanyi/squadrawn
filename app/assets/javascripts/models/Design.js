@@ -4,7 +4,7 @@ app.Design = Backbone.Model.extend({
   urlRoot: "/designs",
 
   defaults: {
-      canvas_data: "",
+      canvas_data: {},
       url: "",
   },
 

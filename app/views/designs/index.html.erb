@@ -16,7 +16,7 @@
   <tbody>
     <% @designs.each do |design| %>
       <tr>
-        <td><%= design.canvas_data %></td>
+        
         <td><%= link_to(image_tag(design.url, :class => "thumbnail" ), design_path(design)) %></td>
         <td><%= link_to 'Show', design %></td>
         <td><%= link_to 'Edit', edit_design_path(design) %></td>
