@@ -25,22 +25,28 @@
 //= require_tree .
 
 $(function(){
-  var faye = new Faye.Client('http://localhost:9292/faye');
-  faye.subscribe('/designs/1', function(data){
-    var currentMessage = new app.Message();
+      var faye = new Faye.Client('http://localhost:9292/faye');
+      faye.subscribe('/designs/1', function(data){
 
-    currentMessage.set({
-      content: data.content,
-      user: {
-        name: data.user.name
-      }
-    });
+        if (data.user.name === app.currentUser.name) {
+          return;
+        } else {
 
-    var messageView = new app.MessageView({
-      model: currentMessage,
-    });
+          var currentMessage = new app.Message();
 
-    messageView.render();
-    updateScroll();
+          currentMessage.set({
+            content: data.content,
+            user: {
+              name: data.user.name
+            }
+          });
+
+          var messageView = new app.MessageView({
+            model: currentMessage,
+          });
+
+          messageView.render();
+          updateScroll();
+        }
   });
 });
