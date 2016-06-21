@@ -5,38 +5,71 @@ var canvas;
 var pixels = [];
 var lines = [];
 var lastline;
-var cursorMode;
+var cursorMode = {};
 var mouseDownPos;
 var mouseUpPos;
-
 var mouseDelta;
+
+function saveCanvas() {
+  console.log("attempting to save");
+  return project.exportJSON();
+}
+
+// Defines what to do with the cursor based on radio button values
+function getCursorMode() {
+  cursorMode = {
+    brush: $('#brushRadio').is(':checked'),
+    select: $('#selectRadio').is(':checked'),
+  };
+}
+
+function deselectAll() {
+  _.each(project.selectedItems, function(l){
+    l.selected = false;
+  });
+}
+
+function drawPoints(strokeWidth, strokeColor, strokePoints) {
+      var newPath = new Path();
+
+      if(strokeColor === 111) {
+        var strCol = "#000";
+      } else if(strokeColor === 222) {
+        var strCol = "#fff";
+      } else {
+        var strCol = new HsbColor(strokeColor, 1,1);
+      }
+
+      newPath.strokeColor = strCol;
+      newPath.strokeWidth = strokeWidth;
+      newPath.strokeCap = 'round';
+
+      for(var i=0, len=strokePoints.length; i<len; i++){
+        var _s = strokePoints[i].split('|');
+        newPath.add(new Point(parseInt(_s[0]), parseInt(_s[1])));
+      }
+
+      newPath.closed = false;
+      group.addChild(newPath);
+      paper.view.draw();
+  }
+
+
 
 // GLOBAL VARIABLES
 function initializePaper() {
-
-
-// var hitOptions = {
-// 	segments: true,
-// 	stroke: true,
-// 	fill: true,
-// 	tolerance: 5
-// };
-
-
-
-
   console.log("paperScript.js loaded");
-
   paper.setup('myCanvas');
+  paper.install(window);
+  getCursorMode();
   // var group = new Group();
 
+
+    // Checks if shift is being held down
     $(window).keydown(event, function(e) {
       if (event.keyCode == 16) {
       shiftDown = true;
-      console.log("shiftdown is" + shiftDown);
       }
-
-
     });
     $(window).keyup(event, function(e) {
       if (event.keyCode == 16) {
@@ -44,21 +77,28 @@ function initializePaper() {
       }
     });
 
-    function getCursorMode() {
-      cursorMode = {
-        brush: $('#brushRadio').is(':checked'),
-        select: $('#selectRadio').is(':checked'),
-      };
-    }
-    getCursorMode();
-    $(".cursorRadio").click(getCursorMode);
 
+    function switchCursor() {
+        getCursorMode();
+        // Deselect items when changing from select mode
+        if (!cursorMode.select) {
+          _.each(project.selectedItems, function (s) {
+            s.selected = false;
+          });
+        }
+    }
+    $(".cursorRadio").click(switchCursor);
+
+
+    // Removes the last line drawn from the canvas, and removes it from the lines array.
     function undo(){
         _.last(lines).remove();
         lines.pop();
     }
     $("#undoButton").click(undo);
 
+
+    // Grabs the canvas and turns it into a PNG
     function exportCanvas() {
         canvas = document.getElementById("myCanvas");
         var imgUrl = canvas.toDataURL("image/png");
@@ -68,14 +108,6 @@ function initializePaper() {
     }
     $("#exportButton").click(exportCanvas);
 
-
-    paper.install(window);
-
-
-
-
-
-    paper.setup('myCanvas');
 
 		// Create a simple drawing tool:
 		var tool = new Tool();
@@ -91,10 +123,8 @@ function initializePaper() {
               			path.strokeColor = '#' + $("#colorPicker").val();
                     path.strokeWidth = $("#brushSize").val();
                     path.strokeCap = 'round';
-                    console.log("mouse down " + event.point);
-                    console.log(path);
-
-
+                    // console.log("mouse down " + event.point);
+                    // console.log(path);
               			path.add(event.point);
               }
 
@@ -102,26 +132,24 @@ function initializePaper() {
 
             if (cursorMode.select === true) {
                   selected = project.hitTest(event.point);
-                  if (!shiftDown) {
-                    if(selected.item.selected !== true) {
-                      _.each(lines, function(l){
-                        l.selected = false;
-                      });
+
+                  if (selected !== null) {
+                        if (!shiftDown) {
+                          if(selected.item.selected !== true) {
+                            deselectAll();
+                          }
+                        }
                   }
-                }
 
-
-
+                  if (!shiftDown && project.selectedItems.length === 0) {
+                    selected.item.selected = true;
+                  }
 
               }
-                  console.log(selected);
-
-
     		}
 
     		tool.onMouseDrag = function(event) {
 
-            console.log(event.delta);
             mouseMovement = event.delta;
 
             if (cursorMode.brush === true) {
@@ -130,20 +158,12 @@ function initializePaper() {
             }
 
             if (cursorMode.select === true) {
-
-              // debugger
-              newPos = {x: 500, y: 500};
-              // newPos = {x: selected.item.position_x - event.delta.x, y: selected.item.position_y - event.delta.y};
-              console.log(newPos);
-
-            if (selected) {
-              _.each(project.selectedItems, function(i) {
-                  i.position = {x: i.position._x + event.delta.x, y: i.position._y + event.delta.y};
-              });
-            }
-
-            }
-
+              if (selected !== null) {
+                  _.each(project.selectedItems, function(i) {
+                      i.position = {x: i.position._x + event.delta.x, y: i.position._y + event.delta.y};
+                  });
+                }
+              }
     		}
 
         tool.onMouseUp = function(event) {
@@ -153,6 +173,7 @@ function initializePaper() {
                 lines.push(path);
             }
             if (cursorMode.select === true) {
+              if (selected !== null) {
                 if (mouseUpPos.x === mouseDownPos.x && mouseUpPos.y === mouseDownPos.y){
                   if (shiftDown) {
                     if (selected.item.selected === true) {
@@ -163,9 +184,7 @@ function initializePaper() {
                   }
 
                   if (!shiftDown && project.selectedItems.length > 0) {
-                    _.each(lines, function(l){
-                      l.selected = false;
-                    });
+                    deselectAll();
                     selected.item.selected = true;
                   }
 
@@ -176,13 +195,14 @@ function initializePaper() {
                       selected.item.selected = true;
                     }
                   }
-
-
-
                 }
+              } else {  // if selected == null
+                if(!shiftDown) {
+                deselectAll();
+                }
+              }
           }
+        }  // onMouseUp
 
-        }
 
-
-}
+} // closes Initialize Paper
