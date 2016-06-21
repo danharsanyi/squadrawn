@@ -26,7 +26,10 @@
 
 $(function(){
       var faye = new Faye.Client('http://localhost:9292/faye');
-      faye.subscribe('/designs/1', function(data){
+      var currentDesign = parseInt(app.currentDesignID);
+      var url = '/designs/'+currentDesign;
+      
+      faye.subscribe(url, function(data){
 
         if (data.user.name === app.currentUser.name) {
           return;
