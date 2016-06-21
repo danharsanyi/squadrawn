@@ -30,18 +30,16 @@
 }
 
 #chatInput {
-width: inherit;
+width: 100%;
 height: 40px;
-padding-top: 4px;
+border-top: 2px solid #E5E5EA;
 display: flex;
 flex-direction: column;
-padding-bottom: 2px;
 }
 
 #chatInput input {
   align-self: center;
-  border: 2px solid grey;
-  border-radius: 2px;
+  border: none;
 }
 
 input:focus{
@@ -55,6 +53,7 @@ input:focus{
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
+  padding-bottom: 4px;
 }
 
 #chatInputForm {
