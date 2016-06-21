@@ -9,6 +9,11 @@ app.DesignView = Backbone.View.extend({
     toolsView.render();
     initializePaper();
 
+
+    this.$el.find('#buyButton').on('click', function() {
+        app.router.navigate('checkout/' + app.currentDesignID, {trigger: true});
+    })
+
     // if (app.currentDesignID) {
     //
     //   var imageUrl = app.designs.get(app.currentDesignID).toJSON().url;

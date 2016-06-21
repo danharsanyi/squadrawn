@@ -1,8 +1,10 @@
 var app = app || {};
 
 app.CheckOutView = Backbone.View.extend({
-    el: '',
+    el: '#main',
     render: function ( data ) {
-        console.log('checkout view lol');
+
+        var checkOutViewTemplate = $('#checkOutViewTemplate').html();
+        this.$el.html(checkOutViewTemplate);
     }
 })
