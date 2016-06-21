@@ -150,9 +150,14 @@ ELEMENT VIEW ###############################################################
 // ADD *************************************************************************
 
 #elementsAdd {
-
 }
 
 #elementsAdd div {
+    padding: 20px;
+    background: rgb(226, 226, 226);
+}
 
+#elementsAdd div:hover {
+    background: rgb(172, 172, 172);
+    cursor: pointer; 
 }
