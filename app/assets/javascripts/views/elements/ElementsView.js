@@ -11,5 +11,9 @@ app.ElementsView = Backbone.View.extend({
 
     var elementsListView = new app.ElementsListView();
     elementsListView.render();
+
+    var addElementsView = new app.AddElementsView();
+    addElementsView.render();
+    
   }
 });
