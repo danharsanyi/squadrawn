@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require moments
+//= require scripts
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

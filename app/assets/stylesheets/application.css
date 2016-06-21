@@ -39,17 +39,51 @@ border: 1px solid black;
   width: inherit;
   height: inherit;
   overflow-y: scroll;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
 }
 
 #chatInputForm {
   width: 98%;
 }
 
+.chatTime {
+  margin-bottom: -2px;
+  margin-top: 1px;
+  margin-left: 3px;
+  font-size: 10px;
+}
+
+.chatNames {
+  margin-bottom: -2px;
+  margin-top: 1px;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+.chatContent {
+  margin-left: 3px;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
 .myMessage {
-  color: blue;
-  text-align: right;
+  background-color: #2B96F6;
+  color: white;
+  border-radius: 5px;
+  width: 80%;
+  align-self: flex-end;
+  margin-top: 4px;
+  margin-right: 4px;
 }
 
 .otherMessage {
-  color: grey;
+  background-color: #E5E5EA;
+  color: black;
+  border-radius: 5px;
+  width: 80%;
+  align-self: flex-start;
+  margin-top: 4px;
+  margin-left: 4px;
 }
