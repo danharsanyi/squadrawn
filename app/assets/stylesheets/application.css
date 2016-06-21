@@ -31,8 +31,18 @@
 
 #chatInput {
 width: inherit;
-height: 150px;
-border: 1px solid black;
+height: 40px;
+padding-top: 4px;
+display: flex;
+flex-direction: column;
+padding-bottom: 2px;
+}
+
+#chatInput input {
+  align-self: center;
+  border: 2px solid grey;
+  border-radius: 2px;
+
 }
 
 #chatMessages {
@@ -46,6 +56,7 @@ border: 1px solid black;
 
 #chatInputForm {
   width: 98%;
+  height: 50px;
 }
 
 .chatTime {
@@ -72,7 +83,7 @@ border: 1px solid black;
   background-color: #2B96F6;
   color: white;
   border-radius: 5px;
-  width: 80%;
+  width: 55%;
   align-self: flex-end;
   margin-top: 4px;
   margin-right: 4px;
@@ -82,7 +93,7 @@ border: 1px solid black;
   background-color: #E5E5EA;
   color: black;
   border-radius: 5px;
-  width: 80%;
+  width: 55%;
   align-self: flex-start;
   margin-top: 4px;
   margin-left: 4px;
