@@ -10,6 +10,8 @@ ELEMENT VIEW ###############################################################
 
 // GLOBAL
 
+
+
 #elementsContainer * {
     margin: 0;
     padding: 0;
@@ -18,6 +20,13 @@ ELEMENT VIEW ###############################################################
 }
 
 // CONTAINERS ******************************************************************
+
+#elementsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+}
 
 #elementsContainer ul {
 
@@ -28,17 +37,16 @@ ELEMENT VIEW ###############################################################
 }
 
 #elementsMenu {
-    flex: 0;
+    flex-shrink: 0
 }
 
 #elementsList {
     flex-grow: 1;
     overflow: auto;
-    max-height: 300px;
 }
 
 #elementsAdd {
-    flex: 0;
+    flex-shrink: 0
 }
 
 // MENU ************************************************************************
