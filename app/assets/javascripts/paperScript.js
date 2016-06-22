@@ -85,8 +85,13 @@ function downloadCanvas(link) {
   link.download = "dope-photo.png";
 }
 
-function insertElement(url){
+function insertImage(url){
     var raster = new Raster(url);
+}
+
+function insertDrawing (data) {
+    project.importJSON(data);
+    paper.view.draw();
 }
 
 
@@ -175,8 +180,8 @@ function initializePaper() {
 
             if (cursorMode.select === true) {
                   selected = project.hitTest(event.point);
-                  // console.log(selected);
-                  // console.log(project.selectedItems);
+                  console.log(selected);
+                  console.log(project.selectedItems);
 
                   if (selected !== null) {
                         if (!shiftDown) {

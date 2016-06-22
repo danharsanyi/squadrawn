@@ -1,3 +1,6 @@
 == README
 
 We go hard on that paint.
+
+Bugs:
+- When there are no designs after a db:seed there is a cannot read error in the designs view

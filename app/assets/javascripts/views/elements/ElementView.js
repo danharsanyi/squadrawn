@@ -11,7 +11,8 @@ app.ElementView = Backbone.View.extend({
       var elementWithData = _elementTemplate({
           title: element.name,
           image: element.value.url,
-          type: elementObj.element_type
+          type: elementObj.element_type,
+          id: elementObj.id
       });
 
       console.log('rendering element');
@@ -20,7 +21,14 @@ app.ElementView = Backbone.View.extend({
       this.$el.appendTo('#elementsList ul');
 
       this.$el.click(function(){
-        insertElement(element.value.url);
+
+        if (elementObj.element_type === 'image') {
+            insertImage(element.value.url);
+        }
+
+        if (elementObj.element_type === 'shape') {
+            insertDrawing(element.value);
+        }
       });
   }
 });
