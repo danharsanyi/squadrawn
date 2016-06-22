@@ -35,13 +35,11 @@ app.ElementsMenuView = Backbone.View.extend({
 
         $(document).on('click', '#elementsMenu ul li', function(e){
             var clickedType = $(e.currentTarget).attr('data-type')
-            app.component.elementsListView.render(clickedType);
-        })
-
-
-
-
-
+            console.log(clickedType);
+            if (clickedType) {
+                app.component.elementsListView.render(clickedType);
+            }
+        });
 
     }
 });
