@@ -6,7 +6,7 @@
       </div>
     <% end %>
     <label class="amount">
-        <%= @amount %>
+        <%= Rails.configuration.stripe[:publishable_key] %>
       <span>Amount: $5.00</span>
     </label>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
