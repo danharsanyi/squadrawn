@@ -62,7 +62,9 @@ $(function(){
         // WITH data which is - prject.exportJSON
         console.log("json received");
 
+
       if (data[1].id !== app.currentUser.id) {
+
         if (data[0] == "Movement"){
           selectedItems = data[2];
           _.each(selectedItems, function(i){
@@ -72,11 +74,24 @@ $(function(){
           });
           return;
         }
+
+        if (data[0] == "Delete") {
+          var itemsToDelete = [];
+          _.each(data[2], function(d){
+            var e = project.getItem({id: d});
+            e.remove();
+            paper.view.draw();
+          });
+          return;
+        }
+
         if (JSON.parse(data[0])[0] == "Path") {
           project.layers[0].importJSON(data[0]);
           paper.view.draw();
           return;
         }
+
+
       }
 
     });

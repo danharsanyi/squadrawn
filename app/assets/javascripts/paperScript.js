@@ -12,7 +12,7 @@ var mouseDelta;
 
 function saveCanvas() {
   // console.log("attempting to save");
-  var canvasIsThere = $('#myCanvas')[0]
+  var canvasIsThere = $('#myCanvas')[0];
   if (canvasIsThere) return project.exportJSON();
 }
 
@@ -67,6 +67,7 @@ function undo(){
 function deleteProject(){
   app.designs.get(app.currentDesignID).destroy();
   window.location = "/designs";
+
 }
 
 function exportCanvas() {
@@ -89,10 +90,24 @@ function insertImage(url){
     var raster = new Raster(url);
 }
 
+
+function deleteSelectedElements() {
+  var deleteJSON = ["Delete", app.currentUser];
+  var itemsToDelete = [];
+  _.each(project.selectedItems, function(p) {
+    itemsToDelete.push(p.id);
+    p.remove();
+    paper.view.draw();
+  });
+  deleteJSON.push(itemsToDelete);
+  sendCanvasData(deleteJSON);
+}
+
 function insertDrawing (data) {
     project.importJSON(data);
     paper.view.draw();
 }
+
 
 
 
@@ -138,15 +153,10 @@ function initializePaper() {
       if(event.keyCode == 8) {
         if (!$("input").is(":focus") && project.selectedItems.length !== 0) {
               event.preventDefault();
-              // console.log("mad");
-              _.each(project.selectedItems, function(p) {
-                p.remove();
-              });
+              deleteSelectedElements();
           }
       }
     });
-
-
 
 
 
