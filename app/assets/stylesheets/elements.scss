@@ -67,6 +67,23 @@ ELEMENT VIEW ###############################################################
 
 }
 
+[data-type="all"] .typeSymbolContainer .typeSymbol {
+    background-color: #ccc;
+}
+
+[data-type="image"] .typeSymbolContainer .typeSymbol {
+    background-color: #FE890A;
+}
+
+[data-type="shape"] .typeSymbolContainer .typeSymbol {
+    background-color: #19b516;
+}
+
+[data-type="text"] .typeSymbolContainer .typeSymbol {
+    background-color: #166db5;
+}
+
+
 #elementsMenu ul li .typeSymbolContainer {
     text-align: center;
 
@@ -75,7 +92,6 @@ ELEMENT VIEW ###############################################################
 #elementsMenu ul li .typeSymbolContainer span {
     width: 10px;
     height: 10px;
-    background-color: #FE890A;
     display: block;
     border-radius: 100px;
 
