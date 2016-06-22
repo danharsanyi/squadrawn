@@ -10,6 +10,8 @@ app.ElementView = Backbone.View.extend({
       var _elementTemplate = _.template(elementTemplate);
       var elementWithData = _elementTemplate({title: element.name, image: element.value.url});
 
+      console.log('rendering element');
+
       this.$el.html(elementWithData);
       this.$el.appendTo('#elementsList ul');
   }
