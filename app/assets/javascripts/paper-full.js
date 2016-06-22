@@ -2585,8 +2585,9 @@ var Project = PaperScopeItem.extend({
 		var items = [];
 		for (var id in this._selectedItems) {
 			var item = this._selectedItems[id];
-			if (item.isInserted())
+			if (item.isInserted() && item.__proto__._class !== "Layer" ) {
 				items.push(item);
+      }
 		}
 		return items;
 	},
