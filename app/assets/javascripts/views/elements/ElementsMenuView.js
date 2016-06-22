@@ -27,10 +27,15 @@ app.ElementsMenuView = Backbone.View.extend({
         getElementTypes.unshift('all');
 
         var menuData = getElementTypes;
-        
+
         menuData.forEach(function (type) {
             var currentMenuItem = new app.ElementsMenuItemView();
             currentMenuItem.render(type);
+        })
+
+        $(document).on('click', '#elementsMenu ul li', function(e){
+            var clickedType = $(e.currentTarget).attr('data-type')
+            app.component.elementsListView.render(clickedType);
         })
 
 
