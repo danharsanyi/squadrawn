@@ -111,6 +111,19 @@ ELEMENT VIEW ###############################################################
     border-bottom: 1px solid #ccc;
 }
 
+[data-type="image"] .elementItemCircle {
+    background-color: #FE890A;
+}
+
+[data-type="shape"] .elementItemCircle {
+    background-color: #19b516;
+}
+
+[data-type="text"] .elementItemCircle {
+    background-color: #166db5;
+}
+
+
 .elementItemType {
 
 }
@@ -119,7 +132,6 @@ ELEMENT VIEW ###############################################################
     border-radius: 500px;
     width: 10px;
     height: 10px;
-    background-color: #FE890A;
     margin: 10px;
 }
 
