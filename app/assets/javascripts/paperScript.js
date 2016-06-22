@@ -9,6 +9,8 @@ var cursorMode = {};
 var mouseDownPos;
 var mouseUpPos;
 var mouseDelta;
+var isDraggingElement = false;
+var currentDraggingElement = {};
 
 function saveCanvas() {
   // console.log("attempting to save");
@@ -88,6 +90,7 @@ function downloadCanvas(link) {
 
 function insertImage(url){
     var raster = new Raster(url);
+    return raster;
 }
 
 
@@ -104,8 +107,23 @@ function deleteSelectedElements() {
 }
 
 function insertDrawing (data) {
-    project.importJSON(data);
+    var importedData = project.importJSON(data);
     paper.view.draw();
+    return importedData;
+}
+
+function insertElement (data) {
+
+    var content = JSON.parse(data.element_data);
+
+    if (data.element_type === 'image') {
+        return insertImage(content.value.url);
+    }
+
+    if (data.element_type === 'shape') {
+        return insertDrawing(content.value);
+    }
+
 }
 
 
@@ -285,6 +303,14 @@ function initializePaper() {
               }
           }
         }  // onMouseUp
+
+        tool.onMouseMove = function(e) {
+            if (isDraggingElement) {
+                var currentElement = project.getItem({ id: currentDraggingElement._id});
+                currentElement.position.x = currentElement.position._x + e.delta.x;
+                currentElement.position.y = currentElement.position._y + e.delta.y;
+            }
+        }
 
 
 } // closes Initialize Paper

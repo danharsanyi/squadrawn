@@ -33,12 +33,31 @@ app.ElementsListView = Backbone.View.extend({
             clickedElement = app.elements.get(currentID).toJSON();
             console.log(clickedElement);
 
-        }).on('mousemove', '#myCanvas', function(e) {
-            
-            console.log('mouse moving on canvas');
+            // put the thing on the canvas
+            // get a reference to it on the canvas
 
-        }).on('mouseup', '#myCanvas', function(e) {
+            var addedElement = insertElement(clickedElement);
+
+            currentDraggingElement = addedElement;
+            isDraggingElement = true;
+
+
+
+        }).on('mousemove', '#myCanvas', function(e) {
+
+            // select the targeted element on the canvas
+            // move the elements position
+            // ----------------------------------------
+            // activate it
+
+
+
+
+        }).on('mouseup', function(e) {
             console.log('mouse upped on canvas')
+
+            // de-select image
+            isDraggingElement = false;
         })
 
 

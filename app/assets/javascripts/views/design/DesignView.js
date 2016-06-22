@@ -28,7 +28,6 @@ app.DesignView = Backbone.View.extend({
 
     this.$el.find('#buyButton').on('click', function() {
         app.router.navigate('checkout/' + app.currentDesignID, {trigger: true});
-
     });
 
 
