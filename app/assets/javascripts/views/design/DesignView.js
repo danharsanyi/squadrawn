@@ -44,23 +44,5 @@ app.DesignView = Backbone.View.extend({
         client.publish(channel, data);
 
     }
-
-    // $(document).on('mouseup', function(e) {
-    //     console.log('mouseup on canvas', e.currentTarget)
-    // })
-
-    // if (app.currentDesignID) {
-    //
-    //   var imageUrl = app.designs.get(app.currentDesignID).toJSON().url;
-    //   var $image = $("<img>");
-    //
-    //   $image.attr('src', imageUrl );
-    //
-    //   this.$el.html($image);
-    //   this.$el.prepend('<button> test checkout </button>');
-    //   var testCheckOutButton = this.$el.find('button');
-    //
-    //
-    // }
   }
 });
