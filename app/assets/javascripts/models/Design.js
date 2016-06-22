@@ -1,5 +1,7 @@
 var app = app || {};
 
+app.component = {};
+
 app.Design = Backbone.Model.extend({
   urlRoot: "/designs",
 
