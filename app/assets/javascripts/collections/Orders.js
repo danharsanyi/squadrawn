@@ -5,10 +5,7 @@ app.Orders = Backbone.Collection.extend({
   model: app.Order,
 
   initialize: function(){
-    // console.log('initialized elements collection');
-
     this.on('add', function (order) {
-      // console.log('you added ', element);
     });
   }
 });
