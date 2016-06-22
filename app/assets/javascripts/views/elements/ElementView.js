@@ -20,15 +20,15 @@ app.ElementView = Backbone.View.extend({
       this.$el.html(elementWithData);
       this.$el.appendTo('#elementsList ul');
 
-      this.$el.click(function(){
-
-        if (elementObj.element_type === 'image') {
-            insertImage(element.value.url);
-        }
-
-        if (elementObj.element_type === 'shape') {
-            insertDrawing(element.value);
-        }
-      });
+    //   this.$el.click(function(){
+    //
+    //     if (elementObj.element_type === 'image') {
+    //         insertImage(element.value.url);
+    //     }
+    //
+    //     if (elementObj.element_type === 'shape') {
+    //         insertDrawing(element.value);
+    //     }
+    //   });
   }
 });

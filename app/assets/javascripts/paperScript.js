@@ -94,6 +94,20 @@ function insertDrawing (data) {
     paper.view.draw();
 }
 
+function insertElement (data) {
+
+    var content = JSON.parse(data.element_data);
+
+    if (data.element_type === 'image') {
+        insertImage(content.value.url);
+    }
+
+    if (data.element_type === 'shape') {
+        insertDrawing(content.value);
+    }
+
+}
+
 
 
 // INITIALIZE CANVAS
@@ -275,6 +289,10 @@ function initializePaper() {
               }
           }
         }  // onMouseUp
+
+        tool.onMouseMove = function(e) {
+            console.log(e.delta);
+        }
 
 
 } // closes Initialize Paper
