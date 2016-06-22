@@ -16,9 +16,9 @@ app.ElementView = Backbone.View.extend({
 
       console.log('rendering element');
 
-
       this.$el.html(elementWithData);
       this.$el.appendTo('#elementsList ul');
+
       this.$el.click(function(){
         insertElement(element.value.url);
       });

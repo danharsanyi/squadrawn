@@ -22,7 +22,7 @@ app.DesignView = Backbone.View.extend({
         if(canvasID === 'myCanvas') {
             allowMouseUpEvent = true;
         }
-    })
+    });
 
     $(document).on('mouseup', function(e) {
         if (allowMouseUpEvent) {
@@ -31,7 +31,7 @@ app.DesignView = Backbone.View.extend({
             sendCanvasData(projectData);
             allowMouseUpEvent = false;
         }
-    })
+    });
 
     var sendCanvasData = function (data) {
 
