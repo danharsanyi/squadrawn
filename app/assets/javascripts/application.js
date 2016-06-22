@@ -23,6 +23,7 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+var sendCanvasData;
 
 $(function(){
       var faye = new Faye.Client('http://localhost:9292/faye');
@@ -57,12 +58,26 @@ $(function(){
     var canvasChannel = '/canvas/' + currentDesign;
 
     faye.subscribe(canvasChannel, function(data) {
-        // console.log('data from ', canvasChannel, ' recieved ', data);
-
         // GO RE-RENDER OVER data
         // WITH data which is - prject.exportJSON
-        paper.project.activeLayer.removeChildren();
-        project.importJSON(data);
-        paper.view.draw();
+        console.log("json received");
+
+      if (data[1].id !== app.currentUser.id) {
+        if (data[0] == "Movement"){
+          selectedItems = data[2];
+          _.each(selectedItems, function(i){
+            item = project.getItem({id: i[0]});
+            item.position = {x: i[1], y: i[2]};
+            paper.view.draw();
+          });
+          return;
+        }
+        if (JSON.parse(data[0])[0] == "Path") {
+          project.layers[0].importJSON(data[0]);
+          paper.view.draw();
+          return;
+        }
+      }
+
     });
 });

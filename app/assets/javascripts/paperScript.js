@@ -223,11 +223,15 @@ function initializePaper() {
 
             if (cursorMode.brush === true) {
                 lines.push(path);
+                lastline = path;
+                lastlineJSON = lastline.exportJSON();
+                lastlineJSON = [lastlineJSON, app.currentUser];
+                sendCanvasData(lastlineJSON);
             }
             if (cursorMode.select === true) {
               if (selected !== null) {
                 if (mouseUpPos.x === mouseDownPos.x && mouseUpPos.y === mouseDownPos.y){
-                  if (shiftDown) {
+                  if (shiftDown) { // if shift is being held down, and the mouse ahs not moved
                     if (selected.item.selected === true) {
                       selected.item.selected = false;
                     } else {
@@ -247,6 +251,16 @@ function initializePaper() {
                       selected.item.selected = true;
                     }
                   }
+                } else {// (if mouse has moved)
+                  selectedItems = project.selectedItems;
+                  var movementJSON = ["Movement", app.currentUser];
+                  var movementData = [];
+                    _.each(selectedItems, function(i){
+                      var itemData = [i.id, i.position._x, i.position._y];
+                      movementData.push(itemData);
+                    });
+                  movementJSON.push(movementData);
+                  sendCanvasData(movementJSON);
                 }
               } else {  // if selected == null
                 if(!shiftDown) {
