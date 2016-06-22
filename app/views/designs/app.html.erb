@@ -9,7 +9,7 @@
 </script>
 
 <script id="appViewTemplate" type="html/template">
-  <div class="container">
+  <div class="allViewsContainer">
       <div id="elementsContainer">Elements go here</div>
       <div id="designContainer">Designs go here</div>
       <div id="chatContainer"></div>
@@ -99,10 +99,18 @@ CHECKOUT VIEW TEMPLATE *********************************************************
 
 
 <script id="checkOutViewTemplate" type="html/template">
-  <div class="checkOutContainer">
+  <div class="checkOutContainer container-fluid">
       <div class="row">
-        <div class="col-sm-6"><!--Column left--></div>
-        <div class="col-sm-6"><!--Column right--></div>
+        <div class="col-sm-4">
+            <div id="imageToBuy">
+              <p>Image to buy</p>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div id="paymentInfo">
+              <p>Credit card info</p>
+            </div>
+        </div>
     </div>
   </div>
 </script>

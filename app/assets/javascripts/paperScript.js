@@ -12,7 +12,8 @@ var mouseDelta;
 
 function saveCanvas() {
   // console.log("attempting to save");
-  return project.exportJSON();
+  var canvasIsThere = $('#myCanvas')[0]
+  if (canvasIsThere) return project.exportJSON();
 }
 
 // Defines what to do with the cursor based on radio button values

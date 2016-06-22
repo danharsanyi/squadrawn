@@ -14,7 +14,5 @@ app.CheckOutView = Backbone.View.extend({
         this.saveDesign();
         var checkOutViewTemplate = $('#checkOutViewTemplate').html();
         this.$el.html(checkOutViewTemplate);
-
-
     }
 })
