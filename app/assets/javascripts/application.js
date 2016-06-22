@@ -57,7 +57,7 @@ $(function(){
     var canvasChannel = '/canvas/' + currentDesign;
 
     faye.subscribe(canvasChannel, function(data) {
-        console.log('data from ', canvasChannel, ' recieved ', data);
+        // console.log('data from ', canvasChannel, ' recieved ', data);
 
         // GO RE-RENDER OVER data
         // WITH data which is - prject.exportJSON
