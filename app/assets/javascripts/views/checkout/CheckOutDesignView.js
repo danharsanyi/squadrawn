@@ -5,8 +5,6 @@ app.CheckOutDesignView = Backbone.View.extend({
 
     render: function (id) {
         var designToBuyTemplate = $('#designToBuyTemplate').html();
-        var stripeButtonTemplate = '<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="' + app.util.key + '" data-description="Launch Survey" data-amount="<%= @amount %>"></script>';
-        
 
         var imageURL = app.designs.get(id).attributes.url;
 
@@ -19,6 +17,6 @@ app.CheckOutDesignView = Backbone.View.extend({
 
         this.$el.append($h3);
         this.$el.append($imageOfDesign);
-        this.$el.append(stripeButtonTemplate);
+
     }
 });
