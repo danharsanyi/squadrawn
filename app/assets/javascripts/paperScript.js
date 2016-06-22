@@ -90,6 +90,8 @@ function downloadCanvas(link) {
 
 function insertImage(url){
     var raster = new Raster(url);
+    var leftPosition = view.center._x = 0;
+    raster.position = leftPosition;
     return raster;
 }
 
@@ -300,7 +302,7 @@ function initializePaper() {
                 if(!shiftDown) {
                 deselectAll();
                 }
-              }
+         }
           }
         }  // onMouseUp
 
