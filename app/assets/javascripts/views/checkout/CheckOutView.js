@@ -10,9 +10,16 @@ app.CheckOutView = Backbone.View.extend({
       designID.save();
     },
 
-    render: function ( data ) {
+    render: function ( id ) {
         this.saveDesign();
         var checkOutViewTemplate = $('#checkOutViewTemplate').html();
         this.$el.html(checkOutViewTemplate);
+
+        var checkOutDesignView = new app.CheckOutDesignView();
+        checkOutDesignView.render( id );
+
+        var checkOutPaymentView = new app.CheckOutPaymentView();
+        checkOutPaymentView.render( );
+
     }
-})
+});

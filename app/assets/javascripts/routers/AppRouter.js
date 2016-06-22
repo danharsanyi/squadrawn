@@ -9,8 +9,8 @@ app.AppRouter = Backbone.Router.extend({
     var appView = new app.AppView();
     appView.render();
   },
-  checkOutPage: function () {
+  checkOutPage: function (id) {
     var checkOutView = new app.CheckOutView();
-    checkOutView.render();
+    checkOutView.render(id);
   }
 });
