@@ -156,12 +156,12 @@ canvas {
   height: 85%;
 }
 
-.imageToBuy {
+#imageToBuy {
   height: 88vh;
   border: 1px solid black;
 }
 
-.paymentInfo {
+#paymentInfo {
   height: 88vh;
   border: 1px solid black;
 }
