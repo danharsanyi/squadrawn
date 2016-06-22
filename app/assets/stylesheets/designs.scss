@@ -1,5 +1,31 @@
+.allDesignsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.newDesignForm {
+  background-image: image-url("newDesignBackground.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -8px;
+}
+
+#new_design #design_url {
+  width: 500px;
+  height: 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
 .thumbnail {
   max-width: 200px;
+  max-height: 200px;
 }
 
 .feature {

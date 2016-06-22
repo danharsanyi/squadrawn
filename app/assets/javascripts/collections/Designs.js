@@ -6,10 +6,10 @@ app.Designs = Backbone.Collection.extend({
   model: app.Design,
 
   initialize: function(){
-    console.log('initialized designs collection');
+    // console.log('initialized designs collection');
 
     this.on('add', function (design) {
-      console.log('you added ', design);
+      // console.log('you added ', design);
     });
   }
 });

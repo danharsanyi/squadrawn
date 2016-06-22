@@ -9,6 +9,6 @@ app.Message = Backbone.Model.extend({
   },
 
   initialize: function () {
-    console.log('initialized message model');
+    // console.log('initialized message model');
   }
 });

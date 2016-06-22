@@ -3,7 +3,7 @@ var app = app || {};
 app.ElementsListView = Backbone.View.extend({
     el: "#elementsList",
     render: function() {
-        console.log('element list view initialised');
+        // console.log('element list view initialised');
         var elementListTemplate = $("#elementListTemplate").html();
         this.$el.html(elementListTemplate);
 

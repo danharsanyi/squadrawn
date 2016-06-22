@@ -3,7 +3,7 @@ var app = app || {};
 app.ToolsView = Backbone.View.extend({
   el: "#toolsContainer",
   render: function(){
-    console.log("attempted toolsview render");
+    // console.log("attempted toolsview render");
 
     var toolsView = $("#toolsViewTemplate").html();
 

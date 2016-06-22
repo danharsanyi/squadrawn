@@ -2,30 +2,10 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Designs</h1>
+<div class="allDesignsContainer">
 
-<table>
-  <thead>
-    <tr>
-      <th>Canvas data</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @designs.each do |design| %>
-      <tr>
-        
-        <td><%= link_to(image_tag(design.url, :class => "thumbnail" ), design_path(design)) %></td>
-        <td><%= link_to 'Show', design %></td>
-        <td><%= link_to 'Edit', edit_design_path(design) %></td>
-        <td><%= link_to 'Destroy', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= link_to(image_tag(design.url, :class => "thumbnail" ), design_path(design)) %>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Design', new_design_path %>
+</div>

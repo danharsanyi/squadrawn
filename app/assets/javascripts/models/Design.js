@@ -9,6 +9,6 @@ app.Design = Backbone.Model.extend({
   },
 
   initialize: function () {
-    console.log('initialized design model');
+    // console.log('initialized design model');
   }
 });

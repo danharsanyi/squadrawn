@@ -6,10 +6,10 @@ app.Elements = Backbone.Collection.extend({
   model: app.Element,
 
   initialize: function(){
-    console.log('initialized elements collection');
+    // console.log('initialized elements collection');
 
     this.on('add', function (element) {
-      console.log('you added ', element);
+      // console.log('you added ', element);
     });
   }
 });

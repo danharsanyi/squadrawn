@@ -11,7 +11,7 @@ var mouseUpPos;
 var mouseDelta;
 
 function saveCanvas() {
-  console.log("attempting to save");
+  // console.log("attempting to save");
   return project.exportJSON();
 }
 
@@ -64,7 +64,7 @@ function undo(){
 
 // GLOBAL VARIABLES
 function initializePaper() {
-  console.log("paperScript initialized");
+  // console.log("paperScript initialized");
   paper.setup('myCanvas');
   paper.install(window);
   loadCanvas();

@@ -1,5 +1,6 @@
 class ElementsController < ApplicationController
   before_action :set_element, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:show, :edit, :update, :destroy]
 
   # GET /elements
   # GET /elements.json
@@ -9,7 +10,7 @@ class ElementsController < ApplicationController
 
   # GET /elements/1
   # GET /elements/1.json
-  def show    
+  def show
   end
 
   # GET /elements/new
@@ -65,6 +66,12 @@ class ElementsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_element
       @element = Element.find(params[:id])
+    end
+
+    def check_admin
+      if @current_user.admin? != true
+        redirect_to designs_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

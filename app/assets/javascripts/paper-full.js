@@ -30,7 +30,7 @@
  *
  */
 
-console.log("pappper.js loaded");
+// console.log("pappper.js loaded");
 
 var paper = new function(undefined) {
 

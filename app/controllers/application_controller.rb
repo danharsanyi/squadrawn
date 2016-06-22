@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   private
   def fetch_user
+
       @current_user = User.find_by( :id => session[:user_id] )
       session[:user_id] = nil unless @current_user
 

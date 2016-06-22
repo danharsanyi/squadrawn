@@ -10,18 +10,24 @@
 </head>
 <body>
 
-<nav>
-  <% if @current_user %>
-        <%= link_to "Logout", logout_path, :method => :delete %>
-        <%= link_to "Edit Profile", edit_user_path(@current_user) %>
-        <%= link_to "View Profile", user_path(@current_user) %>
-        <%= link_to "Create New Design", designs_new_path %>
-      <% end %>
-</nav>
-
 <% if @current_user %>
-  <p>Currently logged in as: <%= @current_user.name %></p>
+<header>
+<nav>
+        <%= link_to "Logout", logout_path, :method => :delete %>
+        <%= link_to "View Profile", user_path(@current_user) %>
+        <%= link_to "View All Designs", designs_path %>
+        <%= link_to "Create Design", designs_new_path %>
+  </nav>
+<p>Welcome <%= @current_user.name %>!</p>
+</header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <% end %>
+
 
 
 <%= yield %>

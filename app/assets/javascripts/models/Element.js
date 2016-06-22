@@ -8,9 +8,9 @@ app.Element = Backbone.Model.extend({
       element_data: "",
       user_id: "",
   },
-  
+
   initialize: function () {
-    console.log('initialized element model');
+    // console.log('initialized element model');
   }
 
 });
