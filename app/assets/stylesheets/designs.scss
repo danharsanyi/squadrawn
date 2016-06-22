@@ -1,6 +1,9 @@
 .allDesignsContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .newDesignForm {
@@ -24,8 +27,20 @@
 }
 
 .thumbnail {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 440px;
+  max-height: 440px;
+  border: 2px solid grey;
+  transition: all 0.5s;
+}
+
+.thumbnail:hover {
+  background-color: rgba(112,132,147,0.8);
+}
+
+a {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
 }
 
 .feature {
