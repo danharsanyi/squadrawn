@@ -13,7 +13,5 @@ app.ElementsListView = Backbone.View.extend({
             var currentElementItem = new app.ElementView();
             currentElementItem.render(element);
         });
-
-        debugger;
     }
 });
