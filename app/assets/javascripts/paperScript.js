@@ -63,6 +63,11 @@ function undo(){
     lines.pop();
 }
 
+function deleteProject(){
+  app.designs.get(app.currentDesignID).destroy();
+  window.location = "/designs";
+}
+
 function exportCanvas() {
     canvas = document.getElementById("myCanvas");
     var imgUrl = canvas.toDataURL("image/png");
@@ -99,6 +104,7 @@ function initializePaper() {
   $("#downloadLink").click(function(){
     downloadCanvas(this);
   });
+  $("#deleteButton").click(deleteProject);
 
   $("#myCanvas").click(function(){
     $("input").blur();
