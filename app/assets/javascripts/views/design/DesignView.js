@@ -18,18 +18,14 @@ app.DesignView = Backbone.View.extend({
     var allowMouseUpEvent = false;
 
     $(document).on('mousedown', '#myCanvas', function(e) {
-        console.log('mousedown on canvas', e.currentTarget.id);
         var canvasID = e.currentTarget.id;
         if(canvasID === 'myCanvas') {
-            console.log('mousedown');
             allowMouseUpEvent = true;
         }
     })
 
     $(document).on('mouseup', function(e) {
         if (allowMouseUpEvent) {
-            console.log('mouse upped');
-
             // GET ME SOME CANVAS DATA
             var projectData = project.exportJSON();
             sendCanvasData(projectData);

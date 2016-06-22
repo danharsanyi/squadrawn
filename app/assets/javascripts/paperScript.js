@@ -179,7 +179,7 @@ function initializePaper() {
                         }
                   }
 
-                  if (!shiftDown && project.selectedItems.length === 0) {
+                  if (!shiftDown && project.selectedItems.length === 0 && selected) {
                     selected.item.selected = true;
                   }
 
@@ -188,7 +188,7 @@ function initializePaper() {
 
     		tool.onMouseDrag = function(event) {
           // console.log("donk");
-          console.log(project.selectedItems);
+          // console.log(project.selectedItems);
             mouseMovement = event.delta;
 
             if (cursorMode.brush === true) {
