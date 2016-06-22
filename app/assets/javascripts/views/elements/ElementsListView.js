@@ -22,5 +22,29 @@ app.ElementsListView = Backbone.View.extend({
             var currentElementItem = new app.ElementView();
             currentElementItem.render(element);
         });
+
+
+        var currentID, clickedElement;
+
+        $(document).on('mousedown', '#elementsList li', function(e) {
+
+            console.log('mouse down');
+            currentID = $(e.currentTarget).find('.elementItemContainer').attr('data-id');
+            clickedElement = app.elements.get(currentID).toJSON();
+            console.log(clickedElement);
+
+        }).on('mousemove', '#myCanvas', function(e) {
+            
+            console.log('mouse moving on canvas');
+
+        }).on('mouseup', '#myCanvas', function(e) {
+            console.log('mouse upped on canvas')
+        })
+
+
+
+        $(document).on('mouseup', '#myCanvas', function(e) {
+
+        });
     }
 });

@@ -85,8 +85,14 @@ function downloadCanvas(link) {
   link.download = "dope-photo.png";
 }
 
-function insertElement(url){
+function insertImage(url){
     var raster = new Raster(url);
+}
+
+function insertDrawing (data) {
+    project.importJSON(data);
+
+    paper.view.draw();
 }
 
 
