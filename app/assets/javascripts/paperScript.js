@@ -41,11 +41,11 @@ function deselectAll() {
 
 function saveDesign() {
   canvas = document.getElementById("myCanvas");
-  var imgUrl = canvas.toDataURL("image/png");
+  var imageUrl = canvas.toDataURL("image/png");
   var designID = app.designs.get(app.currentDesignID);
   var designJSON = saveCanvas();
   designID.set("canvas_data", designJSON);
-  designID.set("url", imgUrl);
+  designID.set("url", imageUrl);
   designID.save(null, {
     success: function (model, response) {
         alert("Design Saved");
@@ -103,7 +103,7 @@ function initializePaper() {
   $("#myCanvas").click(function(){
     $("input").blur();
   });
-  // 
+  //
   // var raster = new Raster("/facebook_like.png");
 
 
@@ -126,7 +126,7 @@ function initializePaper() {
       if(event.keyCode == 8) {
         if (!$("input").is(":focus") && project.selectedItems.length !== 0) {
               event.preventDefault();
-              console.log("mad");
+              // console.log("mad");
               _.each(project.selectedItems, function(p) {
                 p.remove();
               });
@@ -168,8 +168,8 @@ function initializePaper() {
 
             if (cursorMode.select === true) {
                   selected = project.hitTest(event.point);
-                  console.log(selected);
-                  console.log(project.selectedItems);
+                  // console.log(selected);
+                  // console.log(project.selectedItems);
 
                   if (selected !== null) {
                         if (!shiftDown) {
@@ -187,7 +187,7 @@ function initializePaper() {
     		}
 
     		tool.onMouseDrag = function(event) {
-          console.log("donk");
+          // console.log("donk");
           console.log(project.selectedItems);
             mouseMovement = event.delta;
 
@@ -202,7 +202,7 @@ function initializePaper() {
                       i.position = {x: i.position._x + event.delta.x, y: i.position._y + event.delta.y};
                   });
                 } else {
-                  console.log("firing select drag");
+                  // console.log("firing select drag");
 
                   var selectBox = new Path.Rectangle(new Point(50, 50), new Point(150, 100));
                   selectBox.add(event.point);
