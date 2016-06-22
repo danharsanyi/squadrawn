@@ -43,7 +43,7 @@
 </script>
 
 <script id="elementItemView" type="html/template">
-    <div class="elementItemContainer" data-type="<%%= type %>">
+    <div class="elementItemContainer" data-type="<%%= type %>" data-id="<%%= id %>">
         <div class="elementItemType">
             <div class="elementItemCircle">
             </div>
@@ -98,19 +98,13 @@ CHECKOUT VIEW TEMPLATE *********************************************************
 -->
 
 
-<script id="checkOutViewTemplate" type="html/template">
-  <div class="checkOutContainer container-fluid">
-      <div class="row">
-        <div class="col-sm-4">
-            <div id="imageToBuy">
-              <p>Image to buy</p>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div id="paymentInfo">
-              <p>Credit card info</p>
-            </div>
-        </div>
-    </div>
+<script id="checkOutViewTemplate" class="container" type="html/template">
+  <div class="row">
+    <div id="designToBuy" class="col-sm-4"></div>
+    <div id="paymentInfo" class="col-sm-8"></div>
   </div>
 </script>
+
+<script id="designToBuyTemplate" type="html/template">Your design here</script>
+
+<script id="paymentInfoTemplate" type="html/template">CC Form here</script>
