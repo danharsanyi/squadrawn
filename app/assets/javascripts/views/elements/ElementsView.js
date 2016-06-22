@@ -6,14 +6,14 @@ app.ElementsView = Backbone.View.extend({
     var elementViewTemplate = $("#elementsViewTemplate").html();
     this.$el.html(elementViewTemplate);
 
-    var elementsMenuView = new app.ElementsMenuView();
-    elementsMenuView.render();
+    app.component.elementsMenuView = new app.ElementsMenuView();
+    app.component.elementsMenuView.render();
 
-    var elementsListView = new app.ElementsListView();
-    elementsListView.render();
+    app.component.elementsListView = new app.ElementsListView();
+    app.component.elementsListView.render('all');
 
     var addElementsView = new app.AddElementsView();
     addElementsView.render();
-    
+
   }
 });
