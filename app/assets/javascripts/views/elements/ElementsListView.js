@@ -23,7 +23,6 @@ app.ElementsListView = Backbone.View.extend({
             currentElementItem.render(element);
         });
 
-
         var currentID, clickedElement;
 
         $(document).on('mousedown', '#elementsList li', function(e) {
@@ -48,6 +47,7 @@ app.ElementsListView = Backbone.View.extend({
             // activate it
 
         }).on('mouseup', function(e) {
+
             // console.log('mouse upped on canvas')
             //
             // // de-select image
@@ -59,6 +59,7 @@ app.ElementsListView = Backbone.View.extend({
             //
             // console.log(currentElement);
             //
+
 
         })
 

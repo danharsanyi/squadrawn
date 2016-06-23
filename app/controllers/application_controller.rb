@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_action :fetch_user
 
+  def authorize_admin
+    redirect_to designs_path unless @current_user.admin
+    #redirects to previous page
+  end
+
   private
   def fetch_user
 
