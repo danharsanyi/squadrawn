@@ -73,7 +73,9 @@ $(function(){
                 designId: app.currentDesignID,
                 value: app.currentMembers,
             });
-            app.component.membersView.render();
+            app.users.fetch().done(function(data){
+                app.component.membersView.render(data);
+            })
         } else {
             console.log('the new client was either duplicate or not in design room');
         }
@@ -101,7 +103,10 @@ $(function(){
                     value: app.currentMembers,
                 });
                 console.log('uniques found: ', app.currentMembers)
-                app.component.membersView.render();
+                app.users.fetch().done(function(data){
+                    app.component.membersView.render(data);
+                })
+
             }
 
             if ( unique.length === currentMembers.length ) {

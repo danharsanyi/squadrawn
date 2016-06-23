@@ -7,7 +7,7 @@ app.MemberView = Backbone.View.extend({
         var memberViewTemplate = $('#memberViewTemplate').html();
         var _memberViewTemplate = _.template(memberViewTemplate);
         var memberViewWithData = _memberViewTemplate({
-            name: member,
+            name: member.name,
         });
 
         this.$el.html(memberViewWithData);

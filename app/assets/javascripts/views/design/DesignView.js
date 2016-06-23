@@ -12,7 +12,7 @@ app.DesignView = Backbone.View.extend({
     toolsView.render();
 
     app.component.membersView = new app.MembersView();
-    app.component.membersView.render();
+    app.component.membersView.render([]);
 
     initializePaper();
 
