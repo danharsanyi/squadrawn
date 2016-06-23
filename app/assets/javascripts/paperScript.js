@@ -154,6 +154,7 @@ function saveDesign() {
 
 function loadCanvas() {
   project.importJSON(app.designs.get(app.currentDesignID).get("canvas_data"));
+
   paper.view.draw();
 }
 
