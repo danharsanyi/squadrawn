@@ -92,8 +92,11 @@ $(function(){
           return;
         }
 
-        if (data[0] === "Element") {
-
+        if (JSON.parse(data[0])[0] == "Raster") {
+          debugger
+          project.layers[0].importJSON(data[0]);
+          paper.view.draw();
+          return;
         }
 
 

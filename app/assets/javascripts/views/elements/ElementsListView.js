@@ -28,16 +28,13 @@ app.ElementsListView = Backbone.View.extend({
 
         $(document).on('mousedown', '#elementsList li', function(e) {
 
-            console.log('mouse down');
             currentID = $(e.currentTarget).find('.elementItemContainer').attr('data-id');
             clickedElement = app.elements.get(currentID).toJSON();
-            console.log(clickedElement);
 
             // put the thing on the canvas
             // get a reference to it on the canvas
 
             var addedElement = insertElement(clickedElement);
-
             currentDraggingElement = addedElement;
             isDraggingElement = true;
 
@@ -51,17 +48,17 @@ app.ElementsListView = Backbone.View.extend({
             // activate it
 
         }).on('mouseup', function(e) {
-            console.log('mouse upped on canvas')
-
-            // de-select image
-            isDraggingElement = false;
-            var currentElement = project.getItem({ id: currentDraggingElement._id});
-            var data = ['Element', currentElement]
-
-            sendCanvasData(data);
-
-            console.log(currentElement);
-
+            // console.log('mouse upped on canvas')
+            //
+            // // de-select image
+            // isDraggingElement = false;
+            // var currentElement = project.getItem({ id: currentDraggingElement._id});
+            // var data = ['Element', currentElement]
+            //
+            // sendCanvasData(data);
+            //
+            // console.log(currentElement);
+            //
 
         })
 

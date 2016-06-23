@@ -187,6 +187,13 @@ function downloadCanvas(link) {
 
 function insertImage(url){
     var raster = new Raster(url);
+    raster.name = "r" + Math.random().toFixed(5) + Date.now() +"";
+    var leftPosition = view.center._x = 0;
+    raster.position = leftPosition;
+    rasterJSON = raster.exportJSON();
+    rasterJSON = [rasterJSON, app.currentUser];
+    sendCanvasData(rasterJSON);
+    return raster;
 }
 
 
@@ -203,8 +210,25 @@ function deleteSelectedElements() {
 }
 
 function insertDrawing (data) {
-    project.importJSON(data);
+
+    var meme = project.importJSON(data);
+    _.each(meme.children, function(p){
+        p.name = "p" + p.id + Math.random().toFixed(5) + Date.now() +"";
+        pathJSON = p.exportJSON();
+        pathJSON = [pathJSON, app.currentUser];
+        sendCanvasData(pathJSON);
+    });
     paper.view.draw();
+}
+
+function insertElement (data) {
+    var content = JSON.parse(data.element_data);
+    if (data.element_type === 'image') {
+        return insertImage(content.value.url);
+    }
+    if (data.element_type === 'shape') {
+        return insertDrawing(content.value);
+    }
 }
 
 
