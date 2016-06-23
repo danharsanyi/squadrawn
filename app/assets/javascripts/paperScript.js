@@ -224,6 +224,7 @@ function insertDrawing (data) {
 
 function insertElement (data) {
     var content = JSON.parse(data.element_data);
+
     if (data.element_type === 'image') {
         return insertImage(content.value.url);
     }
@@ -274,8 +275,9 @@ function initializePaper() {
     });
 
     $(window).keydown(event, function(){
-      if(event.keyCode == 8) {
+      if(event.keyCode === 46) {
         if (!$("input").is(":focus") && project.selectedItems.length !== 0) {
+                console.log('attempting to delete');
               event.preventDefault();
               deleteSelectedElements();
           }

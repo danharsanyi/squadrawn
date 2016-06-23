@@ -57,35 +57,38 @@ header a:visited {
 #elementsContainer {
   width: 25vw;
   height: 88vh;
-  border: 2px solid black;
 }
 
 #designContainer {
   width: 60vw;
   height: 88vh;
-  border: 2px solid black;
   overflow: hidden;
+   border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
 }
 
 #chatContainer {
   width: 15vw;
   height: 88vh;
-  border: 2px solid black;
   display: flex;
   flex-direction: column;
 }
 
 #chatInput {
 width: 100%;
-height: 40px;
+box-sizing: border-box;
+
+height: 55px;
+/*height: 40px;*/
 border-top: 2px solid #B4B4B4;
-display: flex;
-flex-direction: column;
+/*display: flex;
+flex-direction: column;*/
 }
 
 #chatInput input {
   align-self: center;
   border: none;
+  /*height: 55px;*/
 }
 
 input:focus{
@@ -99,12 +102,12 @@ input:focus{
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  padding-bottom: 4px;
+  padding-bottom: 5px;
 }
 
 #chatInputForm {
   width: 98%;
-  height: 50px;
+  padding: 18px;
 }
 
 .chatTime {

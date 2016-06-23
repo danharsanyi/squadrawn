@@ -15,5 +15,23 @@ h2 {
   width: 100vw;
 }
 
+.loginPage h1 {
+    font-family: helvetica;
+    font-size: 80px;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.loginPage #tag {
+    color: white;
+    font-size: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid white;
+}
+
 .loginForm {
 }

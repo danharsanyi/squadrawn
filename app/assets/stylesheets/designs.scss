@@ -7,6 +7,7 @@ canvas {
 #designContainer {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 #designContainer > * {
@@ -15,13 +16,19 @@ canvas {
 
 
 #membersContainer {
-    height: 80px;
-    flex-shrink: 0
+    height: 55px;
+    flex-shrink: 0;
+    -webkit-box-shadow: -2px -8px 18px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px -8px 18px -10px rgba(0,0,0,0.75);
+    box-shadow: -2px -8px 18px -10px rgba(0,0,0,0.75);
 }
 
 #toolsContainer {
     flex-shrink: 0;
-    padding: 20px;
+    padding: 10px 10px 20px 10px;
+    -webkit-box-shadow: -2px 17px 18px -17px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 17px 18px -17px rgba(0,0,0,0.75);
+    box-shadow: -2px 17px 18px -17px rgba(0,0,0,0.75);
 }
 
 #toolsContainer a {
@@ -31,6 +38,12 @@ canvas {
 
 #toolsContainer button {
     margin-bottom: 3px;
+}
+
+
+#myCanvas {
+    flex-grow: 1;
+    overflow: auto;
 }
 
 input[type=range] {
@@ -122,16 +135,12 @@ input[type=range]:focus::-ms-fill-upper {
 
 
 
-#myCanvas {
-    flex-grow: 1;
-}
 
 // MEMBERS LIST
 
 #membersContainer {
     font-family: arial;
     padding: 15px;
-    border-top: 1px solid black;
 }
 
 #membersListTitle {
@@ -140,13 +149,15 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 11px;
     font-style: italic;
     font-weight: bold;
-    display: block;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 #memberList {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: inline-block;
 }
 
 #memberList li {
