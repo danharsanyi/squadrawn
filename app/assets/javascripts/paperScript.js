@@ -275,9 +275,8 @@ function initializePaper() {
     });
 
     $(window).keydown(event, function(){
-      if(event.keyCode === 46) {
+      if(event.keyCode === 46 || event.keyCode === 8) {
         if (!$("input").is(":focus") && project.selectedItems.length !== 0) {
-                console.log('attempting to delete');
               event.preventDefault();
               deleteSelectedElements();
           }
