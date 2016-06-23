@@ -1,0 +1,55 @@
+/* line 1, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.allDesignsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 9, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.newDesignForm {
+  background-image: url(/assets/newDesignBackground-28ee53fc43c2a66f91f7b4d099b188ee60d6b0b3287d580196822919a2e393db.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -8px;
+}
+
+/* line 22, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#new_design #design_url {
+  width: 500px;
+  height: 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
+/* line 29, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail {
+  max-width: 440px;
+  max-height: 440px;
+  border: 2px solid grey;
+  transition: all 0.5s;
+}
+
+/* line 36, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail:hover {
+  background-color: rgba(112, 132, 147, 0.8);
+}
+
+/* line 40, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+a {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+/* line 46, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.feature {
+  max-width: 500px;
+}

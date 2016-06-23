@@ -22,10 +22,11 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
+//= require faye
 //= require_tree .
 var sendCanvasData;
 
-window.client = new Faye.Client('http://localhost:9292/faye');
+window.client = new Faye.Client('/faye');
 
 $(function(){
       var currentDesign = parseInt(app.currentDesignID);

@@ -27,7 +27,6 @@ app.ChatInputView = Backbone.View.extend({
         var currentDesign = parseInt(app.currentDesignID);
         var currentUser = app.currentUser.id;
 
-        // var client = new Faye.Client('http://localhost:9292/faye');
         var url = '/designs/'+currentDesign;
 
         window.client.publish(url, {
