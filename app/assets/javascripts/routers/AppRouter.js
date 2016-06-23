@@ -1,6 +1,7 @@
 var app = app || {};
 
 app.AppRouter = Backbone.Router.extend({
+
   routes: {
     '': 'designPage',
     'checkout/:id' : 'checkOutPage'

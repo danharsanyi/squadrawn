@@ -172,3 +172,14 @@ canvas {
   margin-top: 200px;
   width: inherit
 }
+
+.spinnerBlue {
+  display: flex;
+  height: 100vh;
+}
+
+#spinnerBlueImage {
+  margin: auto;
+  margin-top: 300px;
+  width: 150px;
+}
