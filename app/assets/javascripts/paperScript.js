@@ -116,6 +116,8 @@ function insertDrawing (data) {
 
 function insertElement (data) {
 
+    console.log('inserting drawing')
+
     var content = JSON.parse(data.element_data);
 
     if (data.element_type === 'image') {

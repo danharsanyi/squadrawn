@@ -1,0 +1,527 @@
+/* line 5, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#paymentInfo {
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+/* line 10, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#paymentInfo form {
+  padding: 20px 20px 80px 20px;
+}
+/* line 1, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.allDesignsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 9, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.newDesignForm {
+  background-image: url(/assets/newDesignBackground-28ee53fc43c2a66f91f7b4d099b188ee60d6b0b3287d580196822919a2e393db.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -8px;
+}
+
+/* line 22, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#new_design #design_url {
+  width: 500px;
+  height: 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
+/* line 29, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail {
+  max-width: 440px;
+  max-height: 440px;
+  border: 2px solid grey;
+  transition: all 0.5s;
+}
+
+/* line 36, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail:hover {
+  background-color: rgba(112, 132, 147, 0.8);
+}
+
+/* line 40, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+a {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+/* line 46, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.feature {
+  max-width: 500px;
+}
+/*
+############################################################################
+ELEMENT VIEW ###############################################################
+############################################################################
+*/
+/* line 15, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsContainer * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+/* line 24, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+/* line 35, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementListTemplate {
+  display: flex;
+}
+
+/* line 39, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu {
+  flex-shrink: 0;
+}
+
+/* line 43, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* line 48, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd {
+  flex-shrink: 0;
+}
+
+/* line 59, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul {
+  display: flex;
+  list-style-type: none;
+}
+
+/* line 64, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li {
+  flex: 1;
+  padding: 10px;
+}
+
+/* line 70, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="all"] .typeSymbolContainer .typeSymbol {
+  background-color: #ccc;
+}
+
+/* line 74, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="image"] .typeSymbolContainer .typeSymbol {
+  background-color: #FE890A;
+}
+
+/* line 78, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="shape"] .typeSymbolContainer .typeSymbol {
+  background-color: #19b516;
+}
+
+/* line 82, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="text"] .typeSymbolContainer .typeSymbol {
+  background-color: #166db5;
+}
+
+/* line 87, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li .typeSymbolContainer {
+  text-align: center;
+}
+
+/* line 92, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li .typeSymbolContainer span {
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 100px;
+}
+
+/* line 100, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li a {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px 0px 8px 0px;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 112, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul {
+  list-style-type: none;
+}
+
+/* line 116, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul li {
+  width: 50%;
+  height: 120px;
+  float: left;
+  position: relative;
+}
+
+/* line 124, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul li .elementItemContainer {
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 130, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="image"] .elementItemCircle {
+  background-color: #FE890A;
+}
+
+/* line 134, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="shape"] .elementItemCircle {
+  background-color: #19b516;
+}
+
+/* line 138, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="text"] .elementItemCircle {
+  background-color: #166db5;
+}
+
+/* line 147, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemType .elementItemCircle {
+  border-radius: 500px;
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+}
+
+/* line 154, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage {
+  text-align: center;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 163, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage .elementItemImageInner {
+  width: 70px;
+  height: 70px;
+}
+
+/* line 168, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage img {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+/* line 173, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemTitle {
+  font-size: 12px;
+  padding: 5px 0px 5px 0px;
+}
+
+/* line 183, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd div {
+  padding: 20px;
+  background: #e2e2e2;
+}
+
+/* line 188, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd div:hover {
+  background: #acacac;
+  cursor: pointer;
+}
+/* line 1, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 24, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 28, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 35, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 40, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 44, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 50, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 58, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 69, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/* line 1, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/sessions.scss */
+h2 {
+  text-align: center;
+  color: white;
+}
+
+/* line 6, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/sessions.scss */
+.loginPage {
+  background-image: url(/assets/loginBackground-1549d94c390f79137d2c1ff856a684eb4f14ef870e623b25ac36e7663570e097.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+/* line 1, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/users.scss */
+.signupForm {
+  background-image: url(/assets/signupBackground-e0e0b437228474e6366e1d0a76849719db1a43f62119ce84ec6b39d5615428dd.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+/*
+
+
+*/
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: 'Muli', sans-serif;
+}
+
+header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100px;
+  line-height: 100px;
+  background-color: rgba(112,132,147,0.85);
+  z-index: 1000;
+}
+
+header p {
+  color: white;
+  position: absolute;
+  font-size: 20px;
+  left: 10px;
+  top: 40px;
+}
+
+header a {
+  color: white;
+  float: right;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0px 10px;
+  transition: all 0.5s;
+}
+
+header a:hover {
+  color: white;
+  background-color: rgba(112,132,147,0.9);
+  text-decoration: none;
+}
+
+header a:visited {
+    color: white;
+}
+
+.allViewsContainer {
+  display: flex;
+  margin: auto;
+  width: 100vw;
+}
+
+#elementsContainer {
+  width: 25vw;
+  height: 88vh;
+  border: 2px solid black;
+}
+
+#designContainer {
+  width: 60vw;
+  height: 88vh;
+  border: 2px solid black;
+  overflow: hidden;
+}
+
+#chatContainer {
+  width: 15vw;
+  height: 88vh;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+#chatInput {
+width: 100%;
+height: 40px;
+border-top: 2px solid #B4B4B4;
+display: flex;
+flex-direction: column;
+}
+
+#chatInput input {
+  align-self: center;
+  border: none;
+}
+
+input:focus{
+  outline: none;
+}
+
+#chatMessages {
+  width: inherit;
+  height: inherit;
+  overflow-y: scroll;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding-bottom: 4px;
+}
+
+#chatInputForm {
+  width: 98%;
+  height: 50px;
+}
+
+.chatTime {
+  margin-bottom: -2px;
+  margin-top: 1px;
+  margin-left: 3px;
+  font-size: 10px;
+}
+
+.chatNames {
+  margin-bottom: -2px;
+  margin-top: 1px;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+.chatContent {
+  margin-left: 3px;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.myMessage {
+  background-color: #2B96F6;
+  color: white;
+  border-radius: 5px;
+  width: 55%;
+  align-self: flex-end;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.otherMessage {
+  background-color: #E5E5EA;
+  color: black;
+  border-radius: 5px;
+  width: 55%;
+  align-self: flex-start;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+a:hover {
+  background: none;
+}
+
+canvas {
+  width: 100%;
+  height: 85%;
+}
+
+#designToBuy {
+  height: 88vh;
+  border: 1px solid black;
+  text-align: center;
+}
+
+#paymentInfo {
+  height: 88vh;
+  border: 1px solid black;
+}
+
+.buyImage {
+  min-width: 100%;
+  margin-top: 200px;
+  width: inherit
+}

@@ -24,7 +24,7 @@ app.DesignView = Backbone.View.extend({
       //   });
     };
 
-    this.$el.find('#buyButton').on('click', payment);
+    // this.$el.find('#buyButton').on('click', payment);
 
     this.$el.find('#buyButton').on('click', function() {
         app.router.navigate('checkout/' + app.currentDesignID, {trigger: true});
@@ -50,12 +50,11 @@ app.DesignView = Backbone.View.extend({
     // // })
 
     sendCanvasData = function (data) {
-
-        var client = new Faye.Client('http://localhost:9292/faye');
         var channel = '/canvas/'+app.currentDesignID;
-        client.publish(channel, data);
+        window.client.publish(channel, data);
     };
   }
+
 });
 
 
