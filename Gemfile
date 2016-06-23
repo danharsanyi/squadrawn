@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faye'
 gem 'thin'
 
+# Faye for devploymeny
+gem 'faye-rails', '~> 2.0'
+
 # Using stripe for payments
 gem 'stripe'
 

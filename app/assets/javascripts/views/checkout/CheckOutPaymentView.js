@@ -7,8 +7,11 @@ app.CheckOutPaymentView = Backbone.View.extend({
         var paymentInfoTemplate = $('#paymentInfoTemplate').html();
         this.$el.html(paymentInfoTemplate);
 
-        this.$el.find('')
-
+        this.$el.find('.navigateToDesign').on('click', function(e) {
+            e.preventDefault();
+            app.router.navigate('', {trigger: true});
+        });
+        
         // app.util.key --------------------------------------------------------
         // this has the publishable key from rails
         // we save it in the application.html.erb :
