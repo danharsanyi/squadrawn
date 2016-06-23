@@ -116,6 +116,8 @@ function insertDrawing (data) {
 
 function insertElement (data) {
 
+    console.log('inserting drawing')
+
     var content = JSON.parse(data.element_data);
 
     if (data.element_type === 'image') {
@@ -194,7 +196,7 @@ function initializePaper() {
 		// Define a mousedown and mousedrag handler
 
 
-    		tool.onMouseDown = function(event) {
+     tool.onMouseDown = function(event) {
           mouseDownPos = event.point;
             if (cursorMode.brush === true) {
               			path = new Path();
@@ -257,6 +259,10 @@ function initializePaper() {
         tool.onMouseUp = function(event) {
           mouseUpPos = event.point;
 
+            if (isDraggingElement) {
+                console.log('im dragging');
+            }
+
             if (cursorMode.brush === true) {
                 lines.push(path);
                 lastline = path;
@@ -264,6 +270,7 @@ function initializePaper() {
                 lastlineJSON = [lastlineJSON, app.currentUser];
                 sendCanvasData(lastlineJSON);
             }
+
             if (cursorMode.select === true) {
               if (selected !== null) {
                 if (mouseUpPos.x === mouseDownPos.x && mouseUpPos.y === mouseDownPos.y){

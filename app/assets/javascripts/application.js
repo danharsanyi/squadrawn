@@ -22,15 +22,17 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
+//= require faye
 //= require_tree .
 var sendCanvasData;
 
+window.client = new Faye.Client('/faye');
+
 $(function(){
-      var faye = new Faye.Client('http://localhost:9292/faye');
       var currentDesign = parseInt(app.currentDesignID);
       var url = '/designs/'+currentDesign;
 
-      faye.subscribe(url, function(data){
+      window.client.subscribe(url, function(data){
 
         if (data.user.name === app.currentUser.name) {
           return;
@@ -57,11 +59,10 @@ $(function(){
     // current design
     var canvasChannel = '/canvas/' + currentDesign;
 
-    faye.subscribe(canvasChannel, function(data) {
+    window.client.subscribe(canvasChannel, function(data) {
         // GO RE-RENDER OVER data
         // WITH data which is - prject.exportJSON
         console.log("json received");
-
 
       if (data[1].id !== app.currentUser.id) {
 
@@ -90,6 +91,12 @@ $(function(){
           paper.view.draw();
           return;
         }
+
+        if (data[0] === "Element") {
+
+        }
+
+
 
 
       }

@@ -50,20 +50,20 @@ app.ElementsListView = Backbone.View.extend({
             // ----------------------------------------
             // activate it
 
-
-
-
         }).on('mouseup', function(e) {
             console.log('mouse upped on canvas')
 
             // de-select image
             isDraggingElement = false;
+            var currentElement = project.getItem({ id: currentDraggingElement._id});
+            var data = ['Element', currentElement]
+
+            sendCanvasData(data);
+
+            console.log(currentElement);
+
+
         })
 
-
-
-        $(document).on('mouseup', '#myCanvas', function(e) {
-
-        });
     }
 });
