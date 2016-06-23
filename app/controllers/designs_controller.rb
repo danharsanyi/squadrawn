@@ -4,11 +4,23 @@ class DesignsController < ApplicationController
   # GET /designs
   # GET /designs.json
   def index
-    @designs = Design.all
 
     if !@current_user
-      redirect_to login_path
+        redirect_to login_path
     end
+
+    if @current_user
+        @designs = [];
+        userDesignIds = DesignsUsers.where(user_id: @current_user.id);
+        # loop throuch each design id and push it to an array
+        userDesignIds.each do | item |
+            currentDesign = Design.find(item.design_id);
+            @designs.push(currentDesign);
+        end
+    end
+
+
+
   end
 
   # GET /designs/1
