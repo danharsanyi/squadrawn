@@ -69,7 +69,10 @@ $(function(){
         if (isUniqueAndRelevant) {
             app.currentMembers.push(currentString)
             console.log('new person joined the room');
-            window.client.publish('/room/added', app.currentMembers);
+            window.client.publish('/room/added', {
+                designId: app.currentDesignID,
+                value: app.currentMembers,
+            });
             app.component.membersView.render();
         } else {
             console.log('the new client was either duplicate or not in design room');
@@ -78,9 +81,12 @@ $(function(){
 
     window.client.subscribe('/room/added', function(data) {
 
+        // if this isn't the same room then dont do anything
+        if(data.designId !== app.currentDesignID) return;
+
         // compare recieved array with current array
         var currentMembers = app.currentMembers;
-        var receivedMembers = data;
+        var receivedMembers = data.value;
 
         var both = currentMembers.concat(receivedMembers);
         var unique = arrayUnique(both);
@@ -90,7 +96,10 @@ $(function(){
             if ( unique.length > currentMembers.length ) {
                 // adopt it and publish
                 app.currentMembers = unique;
-                window.client.publish('/room/added', app.currentMembers);
+                window.client.publish('/room/added', {
+                    designId: app.currentDesignID,
+                    value: app.currentMembers,
+                });
                 console.log('uniques found: ', app.currentMembers)
                 app.component.membersView.render();
             }
