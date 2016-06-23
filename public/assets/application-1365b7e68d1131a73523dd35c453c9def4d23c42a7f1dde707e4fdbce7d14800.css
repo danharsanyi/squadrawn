@@ -1,0 +1,1030 @@
+/*! =======================================================
+                      VERSION  7.1.1              
+========================================================= */
+/*! =========================================================
+ * bootstrap-slider.js
+ *
+ * Maintainers:
+ *		Kyle Kemp
+ *			- Twitter: @seiyria
+ *			- Github:  seiyria
+ *		Rohit Kalkur
+ *			- Twitter: @Rovolutionary
+ *			- Github:  rovolution
+ *
+ * =========================================================
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */
+
+.slider {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+.slider.slider-horizontal {
+  width: 210px;
+  height: 20px;
+}
+.slider.slider-horizontal .slider-track {
+  height: 10px;
+  width: 100%;
+  margin-top: -5px;
+  top: 50%;
+  left: 0;
+}
+.slider.slider-horizontal .slider-selection,
+.slider.slider-horizontal .slider-track-low,
+.slider.slider-horizontal .slider-track-high {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+.slider.slider-horizontal .slider-tick,
+.slider.slider-horizontal .slider-handle {
+  margin-left: -10px;
+  margin-top: -5px;
+}
+.slider.slider-horizontal .slider-tick.triangle,
+.slider.slider-horizontal .slider-handle.triangle {
+  border-width: 0 10px 10px 10px;
+  width: 0;
+  height: 0;
+  border-bottom-color: #0480be;
+  margin-top: 0;
+}
+.slider.slider-horizontal .slider-tick-label-container {
+  white-space: nowrap;
+  margin-top: 20px;
+}
+.slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
+  padding-top: 4px;
+  display: inline-block;
+  text-align: center;
+}
+.slider.slider-vertical {
+  height: 210px;
+  width: 20px;
+}
+.slider.slider-vertical .slider-track {
+  width: 10px;
+  height: 100%;
+  margin-left: -5px;
+  left: 50%;
+  top: 0;
+}
+.slider.slider-vertical .slider-selection {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.slider.slider-vertical .slider-track-low,
+.slider.slider-vertical .slider-track-high {
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+.slider.slider-vertical .slider-tick,
+.slider.slider-vertical .slider-handle {
+  margin-left: -5px;
+  margin-top: -10px;
+}
+.slider.slider-vertical .slider-tick.triangle,
+.slider.slider-vertical .slider-handle.triangle {
+  border-width: 10px 0 10px 10px;
+  width: 1px;
+  height: 1px;
+  border-left-color: #0480be;
+  margin-left: 0;
+}
+.slider.slider-vertical .slider-tick-label-container {
+  white-space: nowrap;
+}
+.slider.slider-vertical .slider-tick-label-container .slider-tick-label {
+  padding-left: 4px;
+}
+.slider.slider-disabled .slider-handle {
+  background-image: -webkit-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
+  background-image: -o-linear-gradient(top, #dfdfdf 0%, #bebebe 100%);
+  background-image: linear-gradient(to bottom, #dfdfdf 0%, #bebebe 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdfdfdf', endColorstr='#ffbebebe', GradientType=0);
+}
+.slider.slider-disabled .slider-track {
+  background-image: -webkit-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
+  background-image: -o-linear-gradient(top, #e5e5e5 0%, #e9e9e9 100%);
+  background-image: linear-gradient(to bottom, #e5e5e5 0%, #e9e9e9 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe5e5e5', endColorstr='#ffe9e9e9', GradientType=0);
+  cursor: not-allowed;
+}
+.slider input {
+  display: none;
+}
+.slider .tooltip.top {
+  margin-top: -36px;
+}
+.slider .tooltip-inner {
+  white-space: nowrap;
+  max-width: none;
+}
+.slider .hide {
+  display: none;
+}
+.slider-track {
+  position: absolute;
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #f9f9f9 100%);
+  background-image: -o-linear-gradient(top, #f5f5f5 0%, #f9f9f9 100%);
+  background-image: linear-gradient(to bottom, #f5f5f5 0%, #f9f9f9 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.slider-selection {
+  position: absolute;
+  background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+  background-image: -o-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+  background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff5f5f5', GradientType=0);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.slider-selection.tick-slider-selection {
+  background-image: -webkit-linear-gradient(top, #89cdef 0%, #81bfde 100%);
+  background-image: -o-linear-gradient(top, #89cdef 0%, #81bfde 100%);
+  background-image: linear-gradient(to bottom, #89cdef 0%, #81bfde 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff89cdef', endColorstr='#ff81bfde', GradientType=0);
+}
+.slider-track-low,
+.slider-track-high {
+  position: absolute;
+  background: transparent;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.slider-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #337ab7;
+  background-image: -webkit-linear-gradient(top, #149bdf 0%, #0480be 100%);
+  background-image: -o-linear-gradient(top, #149bdf 0%, #0480be 100%);
+  background-image: linear-gradient(to bottom, #149bdf 0%, #0480be 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
+  filter: none;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  border: 0px solid transparent;
+}
+.slider-handle.round {
+  border-radius: 50%;
+}
+.slider-handle.triangle {
+  background: transparent none;
+}
+.slider-handle.custom {
+  background: transparent none;
+}
+.slider-handle.custom::before {
+  line-height: 20px;
+  font-size: 20px;
+  content: '\2605';
+  color: #726204;
+}
+.slider-tick {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+  background-image: -o-linear-gradient(top, #f9f9f9 0%, #f5f5f5 100%);
+  background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff5f5f5', GradientType=0);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  filter: none;
+  opacity: 0.8;
+  border: 0px solid transparent;
+}
+.slider-tick.round {
+  border-radius: 50%;
+}
+.slider-tick.triangle {
+  background: transparent none;
+}
+.slider-tick.custom {
+  background: transparent none;
+}
+.slider-tick.custom::before {
+  line-height: 20px;
+  font-size: 20px;
+  content: '\2605';
+  color: #726204;
+}
+.slider-tick.in-selection {
+  background-image: -webkit-linear-gradient(top, #89cdef 0%, #81bfde 100%);
+  background-image: -o-linear-gradient(top, #89cdef 0%, #81bfde 100%);
+  background-image: linear-gradient(to bottom, #89cdef 0%, #81bfde 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff89cdef', endColorstr='#ff81bfde', GradientType=0);
+  opacity: 1;
+}
+/* line 5, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#paymentInfo {
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+/* line 10, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#paymentInfo form {
+  padding: 20px 20px 80px 20px;
+}
+
+/* line 14, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+h2, h3 {
+  color: black;
+  text-align: center;
+}
+
+/* line 19, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#backLink {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+/* line 25, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#backLink:hover {
+  background-color: rgba(112, 132, 147, 0.85);
+  text-align: center;
+  text-decoration: none;
+}
+/* line 3, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+canvas {
+  width: 100%;
+}
+
+/* line 7, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#designContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* line 18, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#membersContainer {
+  height: 55px;
+  flex-shrink: 0;
+  -webkit-box-shadow: -2px -8px 18px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px -8px 18px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px -8px 18px -10px rgba(0, 0, 0, 0.75);
+}
+
+/* line 26, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#toolsContainer {
+  flex-shrink: 0;
+  padding: 10px 10px 20px 10px;
+  -webkit-box-shadow: -2px 17px 18px -17px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 17px 18px -17px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 17px 18px -17px rgba(0, 0, 0, 0.75);
+}
+
+/* line 34, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#toolsContainer a {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 39, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#toolsContainer button {
+  margin-bottom: 3px;
+}
+
+/* line 44, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#myCanvas {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* line 49, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 3.8px 0;
+}
+
+/* line 54, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus {
+  outline: none;
+}
+
+/* line 57, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+  background: #9abbd4;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+
+/* line 66, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.8px;
+}
+
+/* line 77, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #a5c2d9;
+}
+
+/* line 80, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+  background: #9abbd4;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+
+/* line 89, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+}
+
+/* line 98, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* line 106, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-fill-lower {
+  background: #8fb4cf;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+}
+
+/* line 112, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-fill-upper {
+  background: #9abbd4;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+}
+
+/* line 118, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+  height: 8.4px;
+}
+
+/* line 128, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus::-ms-fill-lower {
+  background: #9abbd4;
+}
+
+/* line 131, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus::-ms-fill-upper {
+  background: #a5c2d9;
+}
+
+/* line 141, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#membersContainer {
+  font-family: arial;
+  padding: 15px;
+}
+
+/* line 146, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#membersListTitle {
+  padding: 0 0 5px 5px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* line 156, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#memberList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+/* line 163, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#memberList li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #ccc;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 3px;
+  font-family: arial;
+  margin-right: 5px;
+}
+
+/* line 180, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.allDesignsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 188, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.newDesignForm {
+  background-image: url(/assets/newDesignBackground-28ee53fc43c2a66f91f7b4d099b188ee60d6b0b3287d580196822919a2e393db.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -8px;
+}
+
+/* line 201, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#new_design #design_url {
+  width: 500px;
+  height: 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
+/* line 208, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail {
+  max-width: 440px;
+  max-height: 440px;
+  border: 2px solid grey;
+  transition: all 0.5s;
+}
+
+/* line 215, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail:hover {
+  background-color: rgba(112, 132, 147, 0.8);
+}
+
+/* line 219, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+a {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+/* line 225, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.feature {
+  max-width: 500px;
+}
+/*
+############################################################################
+ELEMENT VIEW ###############################################################
+############################################################################
+*/
+/* line 15, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsContainer * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+/* line 24, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+/* line 35, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementListTemplate {
+  display: flex;
+}
+
+/* line 39, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu {
+  flex-shrink: 0;
+}
+
+/* line 43, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* line 48, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd {
+  flex-shrink: 0;
+}
+
+/* line 59, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul {
+  display: flex;
+  list-style-type: none;
+}
+
+/* line 64, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li {
+  flex: 1;
+  padding: 10px;
+}
+
+/* line 70, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="all"] .typeSymbolContainer .typeSymbol {
+  background-color: #ccc;
+}
+
+/* line 74, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="image"] .typeSymbolContainer .typeSymbol {
+  background-color: #FE890A;
+}
+
+/* line 78, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="shape"] .typeSymbolContainer .typeSymbol {
+  background-color: #19b516;
+}
+
+/* line 82, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="text"] .typeSymbolContainer .typeSymbol {
+  background-color: #166db5;
+}
+
+/* line 87, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li .typeSymbolContainer {
+  text-align: center;
+}
+
+/* line 92, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li .typeSymbolContainer span {
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 100px;
+}
+
+/* line 100, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li a {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px 0px 8px 0px;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 112, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul {
+  list-style-type: none;
+}
+
+/* line 116, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul li {
+  width: 50%;
+  height: 120px;
+  float: left;
+  position: relative;
+}
+
+/* line 124, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul li .elementItemContainer {
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 130, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="image"] .elementItemCircle {
+  background-color: #FE890A;
+}
+
+/* line 134, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="shape"] .elementItemCircle {
+  background-color: #19b516;
+}
+
+/* line 138, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="text"] .elementItemCircle {
+  background-color: #166db5;
+}
+
+/* line 147, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemType .elementItemCircle {
+  border-radius: 500px;
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+}
+
+/* line 154, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage {
+  text-align: center;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 163, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage .elementItemImageInner {
+  width: 70px;
+  height: 70px;
+}
+
+/* line 168, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage img {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+/* line 173, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemTitle {
+  font-size: 12px;
+  padding: 5px 0px 5px 0px;
+}
+
+/* line 183, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd div {
+  padding: 20px;
+  background: #e2e2e2;
+  height: 55px;
+}
+
+/* line 189, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd div:hover {
+  background: #acacac;
+  cursor: pointer;
+}
+/* line 1, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 24, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 28, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 35, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 40, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 44, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 50, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 58, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 69, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/* line 1, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/sessions.scss */
+h2 {
+  text-align: center;
+  color: white;
+}
+
+/* line 6, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/sessions.scss */
+.loginPage {
+  background-image: url(/assets/loginBackground-1549d94c390f79137d2c1ff856a684eb4f14ef870e623b25ac36e7663570e097.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* line 18, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/sessions.scss */
+.loginPage h1 {
+  font-family: helvetica;
+  font-size: 80px;
+  font-weight: 900;
+  font-style: italic;
+  color: white;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 29, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/sessions.scss */
+.loginPage #tag {
+  color: white;
+  font-size: 20px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid white;
+}
+/* line 1, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/users.scss */
+.signupForm {
+  background-image: url(/assets/signupBackground-e0e0b437228474e6366e1d0a76849719db1a43f62119ce84ec6b39d5615428dd.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+/*
+
+
+*/
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: 'Muli', sans-serif;
+}
+
+header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100px;
+  line-height: 100px;
+  background-color: rgba(112,132,147,0.85);
+  z-index: 1000;
+}
+
+header p {
+  color: white;
+  position: absolute;
+  font-size: 20px;
+  left: 10px;
+  top: 40px;
+}
+
+header a {
+  color: white;
+  float: right;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0px 10px;
+  transition: all 0.5s;
+}
+
+header a:hover {
+  color: white;
+  background-color: rgba(112,132,147,0.9);
+  text-decoration: none;
+}
+
+header a:visited {
+    color: white;
+}
+
+.allViewsContainer {
+  display: flex;
+  margin: auto;
+  width: 100vw;
+}
+
+#elementsContainer {
+  width: 25vw;
+  height: 88vh;
+}
+
+#designContainer {
+  width: 60vw;
+  height: 88vh;
+  overflow: hidden;
+   border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+}
+
+#chatContainer {
+  width: 15vw;
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#chatInput {
+width: 100%;
+box-sizing: border-box;
+
+height: 55px;
+/*height: 40px;*/
+border-top: 2px solid #B4B4B4;
+/*display: flex;
+flex-direction: column;*/
+}
+
+#chatInput input {
+  align-self: center;
+  border: none;
+  /*height: 55px;*/
+}
+
+input:focus{
+  outline: none;
+}
+
+#chatMessages {
+  width: inherit;
+  height: inherit;
+  overflow-y: scroll;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding-bottom: 5px;
+}
+
+#chatInputForm {
+  width: 98%;
+  padding: 18px;
+}
+
+.chatTime {
+  margin-bottom: -2px;
+  margin-top: 1px;
+  margin-left: 3px;
+  font-size: 10px;
+}
+
+.chatNames {
+  margin-bottom: -2px;
+  margin-top: 1px;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+.chatContent {
+  margin-left: 3px;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.myMessage {
+  background-color: #2B96F6;
+  color: white;
+  border-radius: 5px;
+  width: 55%;
+  align-self: flex-end;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.otherMessage {
+  background-color: #E5E5EA;
+  color: black;
+  border-radius: 5px;
+  width: 55%;
+  align-self: flex-start;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+a:hover {
+  background: none;
+}
+
+#designToBuy {
+  height: 88vh;
+  border: 1px solid black;
+  text-align: center;
+}
+
+#paymentInfo {
+  height: 88vh;
+  border: 1px solid black;
+}
+
+.buyImage {
+  min-width: 100%;
+  margin-top: 200px;
+  width: inherit
+}
+
+.spinnerBlue {
+  display: flex;
+  height: 100vh;
+}
+
+#spinnerBlueImage {
+  margin: auto;
+  margin-top: 300px;
+  width: 150px;
+}

@@ -1,0 +1,30 @@
+/* line 5, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#paymentInfo {
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+/* line 10, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#paymentInfo form {
+  padding: 20px 20px 80px 20px;
+}
+
+/* line 14, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+h2, h3 {
+  color: black;
+  text-align: center;
+}
+
+/* line 19, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#backLink {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+/* line 25, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/charges.scss */
+#backLink:hover {
+  background-color: rgba(112, 132, 147, 0.85);
+  text-align: center;
+  text-decoration: none;
+}

@@ -37,7 +37,7 @@ ELEMENT VIEW ###############################################################
 }
 
 #elementsMenu {
-    flex-shrink: 0
+    flex-shrink: 0;
 }
 
 #elementsList {
@@ -183,6 +183,7 @@ ELEMENT VIEW ###############################################################
 #elementsAdd div {
     padding: 20px;
     background: rgb(226, 226, 226);
+    height: 55px;
 }
 
 #elementsAdd div:hover {

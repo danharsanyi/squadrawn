@@ -1,3 +1,182 @@
+// CANVAS
+
+canvas {
+  width: 100%;
+}
+
+#designContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#designContainer > * {
+
+}
+
+
+#membersContainer {
+    height: 55px;
+    flex-shrink: 0;
+    -webkit-box-shadow: -2px -8px 18px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px -8px 18px -10px rgba(0,0,0,0.75);
+    box-shadow: -2px -8px 18px -10px rgba(0,0,0,0.75);
+}
+
+#toolsContainer {
+    flex-shrink: 0;
+    padding: 10px 10px 20px 10px;
+    -webkit-box-shadow: -2px 17px 18px -17px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 17px 18px -17px rgba(0,0,0,0.75);
+    box-shadow: -2px 17px 18px -17px rgba(0,0,0,0.75);
+}
+
+#toolsContainer a {
+    padding: 0px;
+    margin: 0px;
+}
+
+#toolsContainer button {
+    margin-bottom: 3px;
+}
+
+
+#myCanvas {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 3.8px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+  background: #9abbd4;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #a5c2d9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+  background: #9abbd4;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #8fb4cf;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #9abbd4;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+  height: 8.4px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #9abbd4;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #a5c2d9;
+}
+
+
+
+
+
+// MEMBERS LIST
+
+#membersContainer {
+    font-family: arial;
+    padding: 15px;
+}
+
+#membersListTitle {
+    padding: 0 0 5px 5px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#memberList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+#memberList li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: #ccc;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 3px;
+    font-family: arial;
+    margin-right: 5px;
+
+}
+
+
+
+// DESIGNS INDEX PAGE
+
 .allDesignsContainer {
   display: flex;
   flex-direction: row;

@@ -1,0 +1,251 @@
+/* line 3, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+canvas {
+  width: 100%;
+}
+
+/* line 7, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#designContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* line 18, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#membersContainer {
+  height: 55px;
+  flex-shrink: 0;
+  -webkit-box-shadow: -2px -8px 18px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px -8px 18px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px -8px 18px -10px rgba(0, 0, 0, 0.75);
+}
+
+/* line 26, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#toolsContainer {
+  flex-shrink: 0;
+  padding: 10px 10px 20px 10px;
+  -webkit-box-shadow: -2px 17px 18px -17px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 17px 18px -17px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 17px 18px -17px rgba(0, 0, 0, 0.75);
+}
+
+/* line 34, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#toolsContainer a {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 39, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#toolsContainer button {
+  margin-bottom: 3px;
+}
+
+/* line 44, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#myCanvas {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* line 49, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 3.8px 0;
+}
+
+/* line 54, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus {
+  outline: none;
+}
+
+/* line 57, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+  background: #9abbd4;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+
+/* line 66, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.8px;
+}
+
+/* line 77, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #a5c2d9;
+}
+
+/* line 80, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+  background: #9abbd4;
+  border-radius: 25px;
+  border: 0px solid #010101;
+}
+
+/* line 89, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+}
+
+/* line 98, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* line 106, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-fill-lower {
+  background: #8fb4cf;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+}
+
+/* line 112, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-fill-upper {
+  background: #9abbd4;
+  border: 0px solid #010101;
+  border-radius: 50px;
+  box-shadow: 0.3px 0.3px 3.6px #000000, 0px 0px 0.3px #0d0d0d;
+}
+
+/* line 118, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 16px;
+  width: 17px;
+  border-radius: 34px;
+  background: #f6ffff;
+  cursor: pointer;
+  height: 8.4px;
+}
+
+/* line 128, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus::-ms-fill-lower {
+  background: #9abbd4;
+}
+
+/* line 131, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+input[type=range]:focus::-ms-fill-upper {
+  background: #a5c2d9;
+}
+
+/* line 141, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#membersContainer {
+  font-family: arial;
+  padding: 15px;
+}
+
+/* line 146, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#membersListTitle {
+  padding: 0 0 5px 5px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* line 156, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#memberList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+/* line 163, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#memberList li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #ccc;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 3px;
+  font-family: arial;
+  margin-right: 5px;
+}
+
+/* line 180, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.allDesignsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 188, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.newDesignForm {
+  background-image: url(/assets/newDesignBackground-28ee53fc43c2a66f91f7b4d099b188ee60d6b0b3287d580196822919a2e393db.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -8px;
+}
+
+/* line 201, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+#new_design #design_url {
+  width: 500px;
+  height: 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
+/* line 208, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail {
+  max-width: 440px;
+  max-height: 440px;
+  border: 2px solid grey;
+  transition: all 0.5s;
+}
+
+/* line 215, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.thumbnail:hover {
+  background-color: rgba(112, 132, 147, 0.8);
+}
+
+/* line 219, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+a {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+/* line 225, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/designs.scss */
+.feature {
+  max-width: 500px;
+}

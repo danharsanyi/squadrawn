@@ -9,16 +9,17 @@ class DesignsController < ApplicationController
         redirect_to login_path
     end
 
-    if @current_user
-        @designs = [];
-        userDesignIds = DesignsUsers.where(user_id: @current_user.id);
-        # loop throuch each design id and push it to an array
-        userDesignIds.each do | item |
-            currentDesign = Design.find(item.design_id);
-            @designs.push(currentDesign);
-        end
-    end
-
+    # if @current_user
+    #     @designs = [];
+    #     userDesignIds = DesignsUsers.where(user_id: @current_user.id);
+    #     # loop throuch each design id and push it to an array
+    #     userDesignIds.each do | item |
+    #         currentDesign = Design.find(item.design_id);
+    #         @designs.push(currentDesign);
+    #     end
+    # end
+    
+    @designs = Design.all
 
 
   end
