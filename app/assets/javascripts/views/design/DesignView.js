@@ -52,6 +52,7 @@ app.DesignView = Backbone.View.extend({
     sendCanvasData = function (data) {
         var channel = '/canvas/'+app.currentDesignID;
         window.client.publish(channel, data);
+        console.log('sending data');
     };
   }
 

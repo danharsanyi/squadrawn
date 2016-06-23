@@ -64,7 +64,6 @@ $(function(){
         // WITH data which is - prject.exportJSON
         console.log("json received");
 
-
       if (data[1].id !== app.currentUser.id) {
 
         if (data[0] == "Movement"){
@@ -92,6 +91,12 @@ $(function(){
           paper.view.draw();
           return;
         }
+
+        if (data[0] === "Element") {
+
+        }
+
+
 
 
       }
