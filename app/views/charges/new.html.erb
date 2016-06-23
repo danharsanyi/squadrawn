@@ -10,8 +10,9 @@
       <span>Amount: $5.00</span>
     </label>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="A month's subscription"
+            data-key="pk_test_23ykm9bZ2mZJJVnjqYsTiPWH"
+            data-description="Buy Squadrawn Swag"
+            data-name="Buy Squadrawn Swag Brah"
             data-amount="500"
             data-locale="auto"></script>
   </article>
@@ -19,3 +20,7 @@
 
           ddd
 <% end %>
+
+
+
+<!-- data-key="<%#= Rails.configuration.stripe[:publishable_key] %>" -->

@@ -5,18 +5,25 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    @amount = 500
+    @amount = 1999
+
+    # Set your secret key: remember to change this to your live secret key in production
+    # See your keys here https://dashboard.stripe.com/account/apikeys
+    Stripe.api_key = "sk_test_qv46W9gobx2AEeSebzq7vWQn"
+
+    token = params[:stripeToken]
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
+      :source => token
     )
 
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+    # Charge the Customer instead of the card
+    Stripe::Charge.create(
+      :amount => @amount,
+      :currency => "aud",
+      :customer => customer.id,
+      :description => 'You Bought Squadrawn swag'
     )
 
   rescue Stripe::CardError => e
