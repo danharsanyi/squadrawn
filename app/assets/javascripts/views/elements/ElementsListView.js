@@ -23,7 +23,6 @@ app.ElementsListView = Backbone.View.extend({
             currentElementItem.render(element);
         });
 
-
         var currentID, clickedElement;
 
         $(document).on('mousedown', '#elementsList li', function(e) {
@@ -61,7 +60,6 @@ app.ElementsListView = Backbone.View.extend({
             sendCanvasData(data);
 
             console.log(currentElement);
-
 
         })
 

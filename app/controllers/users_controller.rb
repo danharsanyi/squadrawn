@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if @current_user.admin == true
+        @users = User.all
+    else
+        redirect_to :root_path
+    end
   end
 
   # GET /users/1
@@ -28,8 +32,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-
-        format.html { redirect_to designs_path, notice: 'User was successfully created.' }
+        session[:user_id] = @user.id
+        format.html { redirect_to designs_new_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
