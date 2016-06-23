@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin, only: :index
 
   # GET /users
   # GET /users.json
   def index
-    if @current_user.admin == true
-        @users = User.all
-    else
-        redirect_to :root_path
-    end
+    @users = User.all
   end
 
   # GET /users/1
