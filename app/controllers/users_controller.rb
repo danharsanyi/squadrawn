@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if @current_user.admin == true
+        @users = User.all
+    else
+        redirect_to :root_path
+    end
   end
 
   # GET /users/1
