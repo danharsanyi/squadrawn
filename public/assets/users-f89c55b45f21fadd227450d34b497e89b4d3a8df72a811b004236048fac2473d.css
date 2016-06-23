@@ -1,0 +1,12 @@
+/* line 1, /Users/jeremy/localdev/apps/squadrawn/app/assets/stylesheets/users.scss */
+.signupForm {
+  background-image: url(/assets/signupBackground-e0e0b437228474e6366e1d0a76849719db1a43f62119ce84ec6b39d5615428dd.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}

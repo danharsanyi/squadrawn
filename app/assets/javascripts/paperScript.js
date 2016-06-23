@@ -9,6 +9,8 @@ var cursorMode = {};
 var mouseDownPos;
 var mouseUpPos;
 var mouseDelta;
+var isDraggingElement = false;
+var currentDraggingElement = {};
 
 
 ///////////////////////////////////
@@ -189,6 +191,9 @@ function downloadCanvas(link) {
 
 function insertImage(url){
     var raster = new Raster(url);
+    var leftPosition = view.center._x = 0;
+    raster.position = leftPosition;
+    return raster;
 }
 
 
@@ -205,8 +210,25 @@ function deleteSelectedElements() {
 }
 
 function insertDrawing (data) {
-    project.importJSON(data);
+    var importedData = project.importJSON(data);
     paper.view.draw();
+    return importedData;
+}
+
+function insertElement (data) {
+
+    console.log('inserting drawing')
+
+    var content = JSON.parse(data.element_data);
+
+    if (data.element_type === 'image') {
+        return insertImage(content.value.url);
+    }
+
+    if (data.element_type === 'shape') {
+        return insertDrawing(content.value);
+    }
+
 }
 
 
@@ -275,7 +297,7 @@ function initializePaper() {
 		// Define a mousedown and mousedrag handler
 
 
-    		tool.onMouseDown = function(event) {
+     tool.onMouseDown = function(event) {
           mouseDownPos = event.point;
             if (cursorMode.brush === true) {
               			path = new Path();
@@ -402,6 +424,10 @@ function initializePaper() {
           boxSelected = false;
           mouseUpPos = event.point;
 
+            if (isDraggingElement) {
+                console.log('im dragging');
+            }
+
             if (cursorMode.brush === true) {
                 lines.push(path);
                 lastline = path;
@@ -409,6 +435,7 @@ function initializePaper() {
                 lastlineJSON = [lastlineJSON, app.currentUser];
                 sendCanvasData(lastlineJSON);
             }
+
             if (cursorMode.select === true) {
               if (selected !== null) {
                 if (mouseUpPos.x === mouseDownPos.x && mouseUpPos.y === mouseDownPos.y){
@@ -449,10 +476,11 @@ function initializePaper() {
                 if(!shiftDown) {
                 deselectAll();
                 }
-              }
+         }
           }
         }  // onMouseUp
 
+<<<<<<< HEAD
         function onMouseMove(event) {
           	project.activeLayer.selected = false;
           	if (event.item)
@@ -462,6 +490,15 @@ function initializePaper() {
               if(selectionRectangle)
                   selectionRectangle.selected = true;
           }
+=======
+        tool.onMouseMove = function(e) {
+            if (isDraggingElement) {
+                var currentElement = project.getItem({ id: currentDraggingElement._id});
+                currentElement.position.x = currentElement.position._x + e.delta.x;
+                currentElement.position.y = currentElement.position._y + e.delta.y;
+            }
+        }
+>>>>>>> 0ba17d3ed9e4bf4dbe4a6d9903df0c6340c24de8
 
 
 } // closes Initialize Paper

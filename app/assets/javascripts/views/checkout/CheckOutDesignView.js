@@ -5,6 +5,7 @@ app.CheckOutDesignView = Backbone.View.extend({
 
     render: function (id) {
         var designToBuyTemplate = $('#designToBuyTemplate').html();
+
         var imageURL = app.designs.get(id).attributes.url;
 
         var $imageOfDesign = $("<img>");
@@ -16,5 +17,6 @@ app.CheckOutDesignView = Backbone.View.extend({
 
         this.$el.append($h3);
         this.$el.append($imageOfDesign);
+
     }
 });

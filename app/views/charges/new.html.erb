@@ -6,13 +6,16 @@
       </div>
     <% end %>
     <label class="amount">
+        <%= Rails.configuration.stripe[:publishable_key] %>
       <span>Amount: $5.00</span>
     </label>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="A month's subscription"
+            data-amount="500"
+            data-locale="auto"></script>
   </article>
+    asd
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"
-          data-locale="auto"></script>
+          ddd
 <% end %>
