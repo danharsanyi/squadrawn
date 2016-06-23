@@ -10,6 +10,102 @@ var mouseDownPos;
 var mouseUpPos;
 var mouseDelta;
 
+
+///////////////////////////////////
+//// MY ATTEMPT ///
+/////////////////////////////////
+
+var selectionBox;
+var boxSelected;
+
+function createSelectionBox(selection) {
+  b = selection.bounds;
+  selectionBox = new Path.Rectangle(b);
+  selectionBox.insert(2, new Point(b.center.x, b.top));
+  selectionBox.insert(2, new Point(b.center.x, b.top-25));
+  selectionBox.insert(2, new Point(b.center.x, b.top));
+  selectionBox.position = selection.bounds.center;
+  selectionBox.rotation = selection.rotation;
+  selectionBox.scaling = selection.scaling;
+  selectionBox.strokeWidth = 5;
+  selectionBox.strokeColor = 'blue';
+  selectionBox.name = "selection rectangle";
+  selectionBox.selected = true;
+  selectionBox.ppath = selection;
+
+
+  paper.view.draw();
+}
+
+
+
+///////////////////////////////////
+//// MY ATTEMPT ///
+/////////////////////////////////
+
+
+
+
+///////////////////////////////////
+//// SELECTION RECTANGLE PASTA ///
+/////////////////////////////////
+
+// var selectionRectangle = null;
+// var selectionRectangleScale=null;
+// var selectionRectangleScaleNormalized=null;
+// var selectionRectangleRotation=null;
+// var segment, path, selectionRectangleSegment;
+// var movePath = false;
+//
+// //
+function initSelectionRectangle(path) {
+  path = path.item;
+    if(selectionRectangle!=null)
+        selectionRectangle.remove();
+    var reset = path.rotation==0 && path.scaling.x==1 && path.scaling.y==1;
+    var bounds;
+    if(reset)
+    {
+        console.log('reset');
+        bounds = path.bounds;
+        path.pInitialBounds = path.bounds;
+    }
+    else
+    {
+        console.log('no reset');
+        bounds = path.pInitialBounds;
+    }
+    console.log('bounds: ' + bounds);
+    b = bounds.clone().expand(10,10);
+
+    selectionRectangle = new Path.Rectangle(b);
+    selectionRectangle.insert(2, new Point(b.center.x, b.top));
+    selectionRectangle.insert(2, new Point(b.center.x, b.top-25));
+    selectionRectangle.insert(2, new Point(b.center.x, b.top));
+    if(!reset)
+    {
+        selectionRectangle.position = path.bounds.center;
+        selectionRectangle.rotation = path.rotation;
+        selectionRectangle.scaling = path.scaling;
+    }
+
+    selectionRectangle.strokeWidth = 0.5;
+    selectionRectangle.strokeColor = 'blue';
+    selectionRectangle.name = "selection rectangle";
+    selectionRectangle.selected = true;
+    selectionRectangle.ppath = path;
+}
+
+  /////////////////////////////////////////////
+ /////////////// END OF PASTA ////////////////
+////////////////////////////////////////////
+
+
+
+
+
+
+
 function saveCanvas() {
   // console.log("attempting to save");
   var canvasIsThere = $('#myCanvas')[0];
@@ -31,6 +127,7 @@ function switchCursor() {
       _.each(project.selectedItems, function (s) {
         s.selected = false;
       });
+      paper.view.draw();
     }
 }
 
@@ -38,6 +135,10 @@ function deselectAll() {
   _.each(project.selectedItems, function(l){
     l.selected = false;
   });
+  _.each(project.getItems({name: "selection rectangle"}), function(r){
+    r.remove();
+  });
+
 }
 
 function saveDesign() {
@@ -189,20 +290,28 @@ function initializePaper() {
 
 
             if (cursorMode.select === true) {
-                  selected = project.hitTest(event.point);
+              selected = project.hitTest(event.point);
+                if (project.hitTest(event.point).item.name == "selection rectangle") {
+                  boxSelected = true;
+                  console.log("click on transform box");
+                } else {
+                  createSelectionBox(selected.item);
+                }
                   console.log(selected);
-                  console.log(project.selectedItems);
+
 
                   if (selected !== null) {
                         if (!shiftDown) {
                           if(selected.item.selected !== true) {
                             deselectAll();
+
                           }
                         }
                   }
 
                   if (!shiftDown && project.selectedItems.length === 0 && selected) {
                     selected.item.selected = true;
+                    selectionBox.selected = true;
                   }
 
               }
@@ -219,22 +328,78 @@ function initializePaper() {
             }
 
             if (cursorMode.select === true) {
+
+
+
+                  /////PASTA/////
+  //                 if (selectionRectangleScale!=null)
+	// {
+  //       ratio = event.point.subtract(selectionRectangle.bounds.center).length/selectionRectangleScale;
+  //       scaling = new Point(ratio, ratio);
+  //       selectionRectangle.scaling = scaling;
+  //       selectionRectangle.ppath.scaling = scaling;
+  //       console.log('scaling: '+selectionRectangle.ppath);
+  //       return;
+	// }
+	// else if(selectionRectangleRotation!=null)
+	// {
+  //       console.log('rotation: '+selectionRectangle.ppath);
+  //       rotation = event.point.subtract(selectionRectangle.pivot).angle + 90;
+  //       selectionRectangle.ppath.rotation = rotation;
+  //       selectionRectangle.rotation = rotation;
+  //       return;
+	// }
+	// if (segment) {
+	// 	segment.point += event.delta;
+	// 	path.smooth();
+	// 	initSelectionRectangle(path);
+	// } else if (path) {
+	//     if (path!=selectionRectangle)
+	//     {
+	// 	    path.position += event.delta;
+	// 	    selectionRectangle.position += event.delta;
+	//     }
+	//     else
+	//     {
+	// 	    selectionRectangle.position += event.delta;
+	// 	    selectionRectangle.ppath.position += event.delta;
+	//     }
+	// }
+                  ////pasta/////
+
+
+
+
+
+            if (!boxSelected) {
               if (selected !== null) {
                   _.each(project.selectedItems, function(i) {
                       i.position = {x: i.position._x + event.delta.x, y: i.position._y + event.delta.y};
+
                   });
                 } else {
                   // console.log("firing select drag");
-
                   var selectBox = new Path.Rectangle(new Point(50, 50), new Point(150, 100));
                   selectBox.add(event.point);
                 }
+            } else {
+              _.each(project.selectedItems, function(i){
+                i.scaling = {x: i.scaling._x - (event.delta.x / 200), y: i.scaling._y + (event.delta.y / 100)};
+              });
+            }
 
 
               }
-    		}
+    		};
 
         tool.onMouseUp = function(event) {
+          //// pasta ////
+          selectionRectangleScale = null;
+          selectionRectangleRotation = null;
+          //// pasta ////
+
+
+          boxSelected = false;
           mouseUpPos = event.point;
 
             if (cursorMode.brush === true) {
@@ -257,7 +422,9 @@ function initializePaper() {
 
                   if (!shiftDown && project.selectedItems.length > 0) {
                     deselectAll();
+
                     selected.item.selected = true;
+                    createSelectionBox(selected.item);
                   }
 
                   if (!shiftDown && project.selectedItems.length === 0) {
@@ -285,6 +452,16 @@ function initializePaper() {
               }
           }
         }  // onMouseUp
+
+        function onMouseMove(event) {
+          	project.activeLayer.selected = false;
+          	if (event.item)
+          	{
+          		event.item.selected = true;
+          	}
+              if(selectionRectangle)
+                  selectionRectangle.selected = true;
+          }
 
 
 } // closes Initialize Paper
