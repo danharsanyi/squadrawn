@@ -61,31 +61,44 @@
 <!-- DESIGN AREA -->
 
 <script id="memberViewTemplate" type="html/template">
-        <div class="memberName"> <%%= name %> x</div>
+        <div class="memberName"> <%%= name %> </div>
 </script>
 
 <script id="membersViewTemplate" type="html/template">
-    <p> Current Members </p>
+    <span id="membersListTitle"> Squad </span>
     <ul id="memberList">
     </ul>
 </script>
 
 <script id="toolsViewTemplate" type="html/template">
-    <input class = "cursorRadio" id ="brushRadio" type="radio" name="cursorMode" value="brush" checked> Brush<br>
-    <input class = "cursorRadio" id = "selectRadio" type="radio" name="cursorMode" value="select"> Select<br>
-    <input id="brushSize" type = "text" value="10" > Brush Size </br>
-    <input id="colorPicker" value="000000" class="jscolor {width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}"><br/>
-    <button id = "undoButton"> Undo</button>
-    <a id = "downloadLink"> <button>Download Image</button> </a>
-    <button id = "saveButton"> Save Design </button>
-    <button id = "buyButton"> Buy Design </button>
-    <button id = "deleteButton"> Delete </button>
+    <div class="cursorModes col-md-2">
+        <div class="cursorModeTitle h4 small"> Brush mode </div>
+        <input class = "cursorRadio" id ="brushRadio" type="radio" name="cursorMode" value="brush" checked> Brush<br>
+        <input class = "cursorRadio" id = "selectRadio" type="radio" name="cursorMode" value="select"> Select<br>
+    </div>
+    <div class="brushSettings col-md-4">
+        <div class="cursorModeTitle h4 small"> Brush settings </div>
+        <label for="fader">Size</label>
+        <input class="brushSizeInput" type="range" min="5" max="50" value="10" id="fader">
+        <label for="fader">Color</label></br>
+        <input id="colorPicker" value="000000" class="jscolor {width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}"><br/>
+    </div>
+    <div class="toolsControls col-md-6">
+        <div class="cursorModeTitle h4 small"> Controls </div>
+        <button id = "undoButton" type="button" class="btn btn-default"> Undo</button>
+        <a id = "downloadLink" > <button type="button" class="btn btn-default">Download Image</button> </a>
+        <button id = "saveButton" type="button" class="btn btn-default"> Save Design </button>
+        <button id = "buyButton" type="button" class="btn btn-success"> Buy Design </button>
+        <button id = "deleteButton" type="button" class="btn btn-danger"> Delete </button>
+    </div>
+
 </script>
 
 <script id="designViewTemplate" type="html/template">
-    <div id="membersContainer"> </div>
+
     <div id = "toolsContainer"> </div>
     <canvas id="myCanvas" resize></canvas>
+    <div id="membersContainer"> </div>
 </script>
 
 

@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery
 //= require jquery_ujs
 //= require underscore
@@ -17,6 +17,7 @@
 //= require jscolor.js
 //= require paper-full.js
 //= require moments
+//= require bootstrap-slider.js
 //= require scripts
 //= require_tree ./models
 //= require_tree ./collections
@@ -24,6 +25,7 @@
 //= require_tree ./routers
 //= require faye
 //= require_tree .
+
 
 function arrayUnique(array) {
     var a = array.concat();

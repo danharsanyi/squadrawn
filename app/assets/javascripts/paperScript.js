@@ -303,7 +303,7 @@ function initializePaper() {
             if (cursorMode.brush === true) {
               			path = new Path();
               			path.strokeColor = '#' + $("#colorPicker").val();
-                    path.strokeWidth = $("#brushSize").val();
+                    path.strokeWidth = $(".brushSizeInput").val();
                     path.strokeCap = 'round';
                     // console.log("mouse down " + event.point);
                     // console.log(path);
