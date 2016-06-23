@@ -1,0 +1,179 @@
+/*
+############################################################################
+ELEMENT VIEW ###############################################################
+############################################################################
+*/
+/* line 15, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsContainer * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+/* line 24, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+/* line 35, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementListTemplate {
+  display: flex;
+}
+
+/* line 39, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu {
+  flex-shrink: 0;
+}
+
+/* line 43, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* line 48, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd {
+  flex-shrink: 0;
+}
+
+/* line 59, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul {
+  display: flex;
+  list-style-type: none;
+}
+
+/* line 64, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li {
+  flex: 1;
+  padding: 10px;
+}
+
+/* line 70, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="all"] .typeSymbolContainer .typeSymbol {
+  background-color: #ccc;
+}
+
+/* line 74, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="image"] .typeSymbolContainer .typeSymbol {
+  background-color: #FE890A;
+}
+
+/* line 78, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="shape"] .typeSymbolContainer .typeSymbol {
+  background-color: #19b516;
+}
+
+/* line 82, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="text"] .typeSymbolContainer .typeSymbol {
+  background-color: #166db5;
+}
+
+/* line 87, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li .typeSymbolContainer {
+  text-align: center;
+}
+
+/* line 92, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li .typeSymbolContainer span {
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 100px;
+}
+
+/* line 100, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsMenu ul li a {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px 0px 8px 0px;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 112, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul {
+  list-style-type: none;
+}
+
+/* line 116, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul li {
+  width: 50%;
+  height: 120px;
+  float: left;
+  position: relative;
+}
+
+/* line 124, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsList ul li .elementItemContainer {
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 130, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="image"] .elementItemCircle {
+  background-color: #FE890A;
+}
+
+/* line 134, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="shape"] .elementItemCircle {
+  background-color: #19b516;
+}
+
+/* line 138, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+[data-type="text"] .elementItemCircle {
+  background-color: #166db5;
+}
+
+/* line 147, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemType .elementItemCircle {
+  border-radius: 500px;
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+}
+
+/* line 154, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage {
+  text-align: center;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 163, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage .elementItemImageInner {
+  width: 70px;
+  height: 70px;
+}
+
+/* line 168, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemImage img {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+/* line 173, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+.elementItemTitle {
+  font-size: 12px;
+  padding: 5px 0px 5px 0px;
+}
+
+/* line 183, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd div {
+  padding: 20px;
+  background: #e2e2e2;
+  height: 55px;
+}
+
+/* line 189, /Users/ja/localdev/apps/squadrawn/app/assets/stylesheets/elements.scss */
+#elementsAdd div:hover {
+  background: #acacac;
+  cursor: pointer;
+}
