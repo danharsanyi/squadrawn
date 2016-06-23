@@ -11,6 +11,19 @@
     padding: 20px 20px 80px 20px;
 }
 
-.navigateToDesign {
+h2, h3 {
+  color: black;
+  text-align: center;
+}
 
+#backLink {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+#backLink:hover {
+  background-color: rgba(112,132,147,0.85);
+  text-align: center;
+  text-decoration: none;
 }

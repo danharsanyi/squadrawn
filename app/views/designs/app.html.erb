@@ -1,4 +1,7 @@
 <div id="main">
+  <div class="spinnerBlue">
+    <%= image_tag( "spinnerBlue.gif", :id => "spinnerBlueImage" ) %>
+  </div>
 </div>
 
 <script>
@@ -125,8 +128,7 @@ CHECKOUT VIEW TEMPLATE *********************************************************
 
 <script id="paymentInfoTemplate" type="html/template">
 
-<form>
-<button class="btn btn-default navigateToDesign"> Go back to design </button>
+<%= form_tag charges_path do %>
 <h1>Order Form</h1>
     <div class="form-group">
         <label for="exampleInputEmail1">Swag</label>
@@ -140,6 +142,9 @@ CHECKOUT VIEW TEMPLATE *********************************************************
         <label for="size">Size</label>
         <select class="form-control">
         <option>XS</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
         <option>XL</option>
         </select>
     </div>
@@ -148,55 +153,48 @@ CHECKOUT VIEW TEMPLATE *********************************************************
         <select class="form-control">
             <option>1</option>
             <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
         </select>
     </div>
     <hr>
     <div class="form-group">
-        <label for="exampleInputEmail1">First name</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        <label for="quantity">Personal Details</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="First Name">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Last name</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Last Name">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Email</label>
         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
     </div>
+    <hr>
     <div class="form-group">
-        <label for="exampleInputEmail1">Address line 1</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        <label for="exampleInputEmail1">Address</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Address">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Address line 2</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="quantity">Country</label>
         <select class="form-control">
-            <option>MURICA!</option>
-            <option>STRAYA</option>
+            <option>NSW</option>
+            <option>VIC</option>
+            <option>ACT</option>
+            <option>SA</option>
+            <option>TAS</option>
+            <option>WA</option>
+            <option>SA</option>
+            <option>NT</option>
         </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">City</label>
         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="City">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Postcode</label>
         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Postcode">
     </div>
+    <button class="btn btn-default navigateToDesign"> Go back to design </button>
 
-  <button type="submit" class="btn btn-default">Submit</button>
-
-
-</form>
-
-
-
-
-
-
+<% end %>
 
 </script>
 
