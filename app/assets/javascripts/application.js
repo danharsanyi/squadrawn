@@ -69,7 +69,7 @@ $(function(){
         if (data[0] == "Movement"){
           selectedItems = data[2];
           _.each(selectedItems, function(i){
-            item = project.getItem({id: i[0]});
+            item = project.getItem({name: i[0]});
             item.position = {x: i[1], y: i[2]};
             paper.view.draw();
           });
@@ -79,7 +79,7 @@ $(function(){
         if (data[0] == "Delete") {
           var itemsToDelete = [];
           _.each(data[2], function(d){
-            var e = project.getItem({id: d});
+            var e = project.getItem({name: d});
             e.remove();
             paper.view.draw();
           });

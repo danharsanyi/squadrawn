@@ -9,8 +9,6 @@ var cursorMode = {};
 var mouseDownPos;
 var mouseUpPos;
 var mouseDelta;
-var isDraggingElement = false;
-var currentDraggingElement = {};
 
 
 ///////////////////////////////////
@@ -34,8 +32,6 @@ function createSelectionBox(selection) {
   selectionBox.name = "selection rectangle";
   selectionBox.selected = true;
   selectionBox.ppath = selection;
-
-
   paper.view.draw();
 }
 
@@ -60,43 +56,43 @@ function createSelectionBox(selection) {
 // var movePath = false;
 //
 // //
-function initSelectionRectangle(path) {
-  path = path.item;
-    if(selectionRectangle!=null)
-        selectionRectangle.remove();
-    var reset = path.rotation==0 && path.scaling.x==1 && path.scaling.y==1;
-    var bounds;
-    if(reset)
-    {
-        console.log('reset');
-        bounds = path.bounds;
-        path.pInitialBounds = path.bounds;
-    }
-    else
-    {
-        console.log('no reset');
-        bounds = path.pInitialBounds;
-    }
-    console.log('bounds: ' + bounds);
-    b = bounds.clone().expand(10,10);
-
-    selectionRectangle = new Path.Rectangle(b);
-    selectionRectangle.insert(2, new Point(b.center.x, b.top));
-    selectionRectangle.insert(2, new Point(b.center.x, b.top-25));
-    selectionRectangle.insert(2, new Point(b.center.x, b.top));
-    if(!reset)
-    {
-        selectionRectangle.position = path.bounds.center;
-        selectionRectangle.rotation = path.rotation;
-        selectionRectangle.scaling = path.scaling;
-    }
-
-    selectionRectangle.strokeWidth = 0.5;
-    selectionRectangle.strokeColor = 'blue';
-    selectionRectangle.name = "selection rectangle";
-    selectionRectangle.selected = true;
-    selectionRectangle.ppath = path;
-}
+// function initSelectionRectangle(path) {
+//   path = path.item;
+//     if(selectionRectangle!=null)
+//         selectionRectangle.remove();
+//     var reset = path.rotation==0 && path.scaling.x==1 && path.scaling.y==1;
+//     var bounds;
+//     if(reset)
+//     {
+//         console.log('reset');
+//         bounds = path.bounds;
+//         path.pInitialBounds = path.bounds;
+//     }
+//     else
+//     {
+//         console.log('no reset');
+//         bounds = path.pInitialBounds;
+//     }
+//     console.log('bounds: ' + bounds);
+//     b = bounds.clone().expand(10,10);
+//
+//     selectionRectangle = new Path.Rectangle(b);
+//     selectionRectangle.insert(2, new Point(b.center.x, b.top));
+//     selectionRectangle.insert(2, new Point(b.center.x, b.top-25));
+//     selectionRectangle.insert(2, new Point(b.center.x, b.top));
+//     if(!reset)
+//     {
+//         selectionRectangle.position = path.bounds.center;
+//         selectionRectangle.rotation = path.rotation;
+//         selectionRectangle.scaling = path.scaling;
+//     }
+//
+//     selectionRectangle.strokeWidth = 0.5;
+//     selectionRectangle.strokeColor = 'blue';
+//     selectionRectangle.name = "selection rectangle";
+//     selectionRectangle.selected = true;
+//     selectionRectangle.ppath = path;
+// }
 
   /////////////////////////////////////////////
  /////////////// END OF PASTA ////////////////
@@ -152,7 +148,7 @@ function saveDesign() {
   designID.set("url", imageUrl);
   designID.save(null, {
     success: function (model, response) {
-        alert("Design Saved");
+      console.log("design saved");
     }});
 }
 
@@ -191,9 +187,6 @@ function downloadCanvas(link) {
 
 function insertImage(url){
     var raster = new Raster(url);
-    var leftPosition = view.center._x = 0;
-    raster.position = leftPosition;
-    return raster;
 }
 
 
@@ -201,7 +194,7 @@ function deleteSelectedElements() {
   var deleteJSON = ["Delete", app.currentUser];
   var itemsToDelete = [];
   _.each(project.selectedItems, function(p) {
-    itemsToDelete.push(p.id);
+    itemsToDelete.push(p.name);
     p.remove();
     paper.view.draw();
   });
@@ -210,25 +203,8 @@ function deleteSelectedElements() {
 }
 
 function insertDrawing (data) {
-    var importedData = project.importJSON(data);
+    project.importJSON(data);
     paper.view.draw();
-    return importedData;
-}
-
-function insertElement (data) {
-
-    console.log('inserting drawing')
-
-    var content = JSON.parse(data.element_data);
-
-    if (data.element_type === 'image') {
-        return insertImage(content.value.url);
-    }
-
-    if (data.element_type === 'shape') {
-        return insertDrawing(content.value);
-    }
-
 }
 
 
@@ -297,7 +273,7 @@ function initializePaper() {
 		// Define a mousedown and mousedrag handler
 
 
-     tool.onMouseDown = function(event) {
+    		tool.onMouseDown = function(event) {
           mouseDownPos = event.point;
             if (cursorMode.brush === true) {
               			path = new Path();
@@ -317,7 +293,7 @@ function initializePaper() {
                   boxSelected = true;
                   console.log("click on transform box");
                 } else {
-                  createSelectionBox(selected.item);
+                  // createSelectionBox(selected.item);
                 }
                   console.log(selected);
 
@@ -409,8 +385,6 @@ function initializePaper() {
                 i.scaling = {x: i.scaling._x - (event.delta.x / 200), y: i.scaling._y + (event.delta.y / 100)};
               });
             }
-
-
               }
     		};
 
@@ -424,18 +398,14 @@ function initializePaper() {
           boxSelected = false;
           mouseUpPos = event.point;
 
-            if (isDraggingElement) {
-                console.log('im dragging');
-            }
-
             if (cursorMode.brush === true) {
                 lines.push(path);
+                path.name = "p" + Math.random().toFixed(5) + Date.now() +"";
                 lastline = path;
                 lastlineJSON = lastline.exportJSON();
                 lastlineJSON = [lastlineJSON, app.currentUser];
                 sendCanvasData(lastlineJSON);
             }
-
             if (cursorMode.select === true) {
               if (selected !== null) {
                 if (mouseUpPos.x === mouseDownPos.x && mouseUpPos.y === mouseDownPos.y){
@@ -451,7 +421,7 @@ function initializePaper() {
                     deselectAll();
 
                     selected.item.selected = true;
-                    createSelectionBox(selected.item);
+                    // createSelectionBox(selected.item);
                   }
 
                   if (!shiftDown && project.selectedItems.length === 0) {
@@ -466,7 +436,7 @@ function initializePaper() {
                   var movementJSON = ["Movement", app.currentUser];
                   var movementData = [];
                     _.each(selectedItems, function(i){
-                      var itemData = [i.id, i.position._x, i.position._y];
+                      var itemData = [i.name, i.position._x, i.position._y];
                       movementData.push(itemData);
                     });
                   movementJSON.push(movementData);
@@ -476,11 +446,10 @@ function initializePaper() {
                 if(!shiftDown) {
                 deselectAll();
                 }
-         }
+              }
           }
         }  // onMouseUp
 
-<<<<<<< HEAD
         function onMouseMove(event) {
           	project.activeLayer.selected = false;
           	if (event.item)
@@ -490,15 +459,6 @@ function initializePaper() {
               if(selectionRectangle)
                   selectionRectangle.selected = true;
           }
-=======
-        tool.onMouseMove = function(e) {
-            if (isDraggingElement) {
-                var currentElement = project.getItem({ id: currentDraggingElement._id});
-                currentElement.position.x = currentElement.position._x + e.delta.x;
-                currentElement.position.y = currentElement.position._y + e.delta.y;
-            }
-        }
->>>>>>> 0ba17d3ed9e4bf4dbe4a6d9903df0c6340c24de8
 
 
 } // closes Initialize Paper
