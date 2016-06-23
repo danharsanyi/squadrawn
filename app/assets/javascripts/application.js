@@ -24,11 +24,86 @@
 //= require_tree ./routers
 //= require faye
 //= require_tree .
+
+function arrayUnique(array) {
+    var a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+
+    return a;
+}
+
 var sendCanvasData;
+
+var app = app || {};
+
+app.currentMembers = [];
 
 window.client = new Faye.Client('/faye');
 
+
 $(function(){
+    console.log('lol')
+    window.client.on('open', function(data) {
+            console.log('something opened')
+    })
+
+    window.client.subscribe('/room/join', function(data) {
+        console.log('JOINING!');
+        console.log(data)
+
+        // ADD THIS NAME TO THE RELEVANT CHAT
+
+        // if the recieved design ID is the same as the current design ID on the client
+        // then add it to a global variable of current users
+        // keep it unique
+
+        var currentString = 'd' + data.design + 'u' + data.user.id;
+
+        var isUniqueAndRelevant = data.design === app.currentDesignID && app.currentMembers.indexOf(currentString) === -1;
+
+        if (isUniqueAndRelevant) {
+            app.currentMembers.push(currentString)
+            console.log('new person joined the room');
+            window.client.publish('/room/added', app.currentMembers);
+            app.component.membersView.render();
+        } else {
+            console.log('the new client was either duplicate or not in design room');
+        }
+    })
+
+    window.client.subscribe('/room/added', function(data) {
+
+        // compare recieved array with current array
+        var currentMembers = app.currentMembers;
+        var receivedMembers = data;
+
+        var both = currentMembers.concat(receivedMembers);
+        var unique = arrayUnique(both);
+
+        if (unique.length >= currentMembers.length) {
+
+            if ( unique.length > currentMembers.length ) {
+                // adopt it and publish
+                app.currentMembers = unique;
+                window.client.publish('/room/added', app.currentMembers);
+                console.log('uniques found: ', app.currentMembers)
+                app.component.membersView.render();
+            }
+
+            if ( unique.length === currentMembers.length ) {
+                console.log('no uniques found')
+                return;
+            }
+
+        }
+
+    })
+
       var currentDesign = parseInt(app.currentDesignID);
       var url = '/designs/'+currentDesign;
 
@@ -93,7 +168,6 @@ $(function(){
         }
 
         if (JSON.parse(data[0])[0] == "Raster") {
-          debugger
           project.layers[0].importJSON(data[0]);
           paper.view.draw();
           return;

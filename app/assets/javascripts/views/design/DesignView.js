@@ -11,10 +11,8 @@ app.DesignView = Backbone.View.extend({
     var toolsView = new app.ToolsView();
     toolsView.render();
 
-    var membersView = new app.MembersView();
-    membersView.render(); 
-
-
+    app.component.membersView = new app.MembersView();
+    app.component.membersView.render();
 
     initializePaper();
 
@@ -33,6 +31,11 @@ app.DesignView = Backbone.View.extend({
         window.client.publish(channel, data);
         console.log('sending data');
     };
+
+    window.client.publish('/room/join', {
+        user: app.currentUser,
+        design: app.currentDesignID
+    });
 
 
   }

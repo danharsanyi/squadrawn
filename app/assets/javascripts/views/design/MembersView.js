@@ -5,9 +5,10 @@ app.MembersView = Backbone.View.extend({
     render: function () {
         var membersViewTemplate = $('#membersViewTemplate').html();
         this.$el.html(membersViewTemplate);
-
-        var memberView = new app.MemberView();
-        memberView.render();
-
+        app.currentMembers.forEach(function( member ) {
+            console.log('looping through currentMembers')
+            var memberView = new app.MemberView();
+            memberView.render(member);
+        })
     }
 })
