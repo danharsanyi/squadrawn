@@ -1,3 +1,4 @@
+// GLOBAL VARIABLES
 
 var mouseMovement;
 var shiftDown = false;
@@ -9,14 +10,12 @@ var cursorMode = {};
 var mouseDownPos;
 var mouseUpPos;
 var mouseDelta;
-
-
-///////////////////////////////////
-//// MY ATTEMPT ///
-/////////////////////////////////
-
 var selectionBox;
 var boxSelected;
+
+
+
+// CANVAS FUNCTIONS
 
 function createSelectionBox(selection) {
   b = selection.bounds;
@@ -35,82 +34,14 @@ function createSelectionBox(selection) {
   paper.view.draw();
 }
 
-
-
-///////////////////////////////////
-//// MY ATTEMPT ///
-/////////////////////////////////
-
-
-
-
-///////////////////////////////////
-//// SELECTION RECTANGLE PASTA ///
-/////////////////////////////////
-
-// var selectionRectangle = null;
-// var selectionRectangleScale=null;
-// var selectionRectangleScaleNormalized=null;
-// var selectionRectangleRotation=null;
-// var segment, path, selectionRectangleSegment;
-// var movePath = false;
-//
-// //
-// function initSelectionRectangle(path) {
-//   path = path.item;
-//     if(selectionRectangle!=null)
-//         selectionRectangle.remove();
-//     var reset = path.rotation==0 && path.scaling.x==1 && path.scaling.y==1;
-//     var bounds;
-//     if(reset)
-//     {
-//         console.log('reset');
-//         bounds = path.bounds;
-//         path.pInitialBounds = path.bounds;
-//     }
-//     else
-//     {
-//         console.log('no reset');
-//         bounds = path.pInitialBounds;
-//     }
-//     console.log('bounds: ' + bounds);
-//     b = bounds.clone().expand(10,10);
-//
-//     selectionRectangle = new Path.Rectangle(b);
-//     selectionRectangle.insert(2, new Point(b.center.x, b.top));
-//     selectionRectangle.insert(2, new Point(b.center.x, b.top-25));
-//     selectionRectangle.insert(2, new Point(b.center.x, b.top));
-//     if(!reset)
-//     {
-//         selectionRectangle.position = path.bounds.center;
-//         selectionRectangle.rotation = path.rotation;
-//         selectionRectangle.scaling = path.scaling;
-//     }
-//
-//     selectionRectangle.strokeWidth = 0.5;
-//     selectionRectangle.strokeColor = 'blue';
-//     selectionRectangle.name = "selection rectangle";
-//     selectionRectangle.selected = true;
-//     selectionRectangle.ppath = path;
-// }
-
-  /////////////////////////////////////////////
- /////////////// END OF PASTA ////////////////
-////////////////////////////////////////////
-
-
-
-
-
-
-
 function saveCanvas() {
   // console.log("attempting to save");
   var canvasIsThere = $('#myCanvas')[0];
   if (canvasIsThere) return project.exportJSON();
 }
 
-// Defines what to do with the cursor based on radio button values
+
+// Checks radio buttons and defines an object based on them
 function getCursorMode() {
   cursorMode = {
     brush: $('#brushRadio').is(':checked'),
@@ -154,7 +85,6 @@ function saveDesign() {
 
 function loadCanvas() {
   project.importJSON(app.designs.get(app.currentDesignID).get("canvas_data"));
-
   paper.view.draw();
 }
 
@@ -255,11 +185,6 @@ function initializePaper() {
   $("#myCanvas").click(function(){
     $("input").blur();
   });
-  //
-  // var raster = new Raster("/facebook_like.png");
-
-
-  // var group = new Group();
 
 
     // Checks if shift is being held down
@@ -274,6 +199,7 @@ function initializePaper() {
       }
     });
 
+    // Checks if delete is pressed, and no input field is being focused
     $(window).keydown(event, function(){
       if(event.keyCode === 46 || event.keyCode === 8) {
         if (!$("input").is(":focus") && project.selectedItems.length !== 0) {
@@ -283,22 +209,11 @@ function initializePaper() {
       }
     });
 
-
-
-
-
-    // Grabs the canvas and turns it into a PNG
-
-
-
-
-		// Create a simple drawing tool:
+		// Create a drawing tool:
 		var tool = new Tool();
 		var path;
 
 		// Define a mousedown and mousedrag handler
-
-
     		tool.onMouseDown = function(event) {
           mouseDownPos = event.point;
             if (cursorMode.brush === true) {
@@ -306,8 +221,6 @@ function initializePaper() {
               			path.strokeColor = '#' + $("#colorPicker").val();
                     path.strokeWidth = $(".brushSizeInput").val();
                     path.strokeCap = 'round';
-                    // console.log("mouse down " + event.point);
-                    // console.log(path);
               			path.add(event.point);
               }
 
@@ -342,8 +255,6 @@ function initializePaper() {
     		}
 
     		tool.onMouseDrag = function(event) {
-          // console.log("donk");
-          // console.log(project.selectedItems);
             mouseMovement = event.delta;
 
             if (cursorMode.brush === true) {
@@ -352,47 +263,6 @@ function initializePaper() {
             }
 
             if (cursorMode.select === true) {
-
-
-
-                  /////PASTA/////
-  //                 if (selectionRectangleScale!=null)
-	// {
-  //       ratio = event.point.subtract(selectionRectangle.bounds.center).length/selectionRectangleScale;
-  //       scaling = new Point(ratio, ratio);
-  //       selectionRectangle.scaling = scaling;
-  //       selectionRectangle.ppath.scaling = scaling;
-  //       console.log('scaling: '+selectionRectangle.ppath);
-  //       return;
-	// }
-	// else if(selectionRectangleRotation!=null)
-	// {
-  //       console.log('rotation: '+selectionRectangle.ppath);
-  //       rotation = event.point.subtract(selectionRectangle.pivot).angle + 90;
-  //       selectionRectangle.ppath.rotation = rotation;
-  //       selectionRectangle.rotation = rotation;
-  //       return;
-	// }
-	// if (segment) {
-	// 	segment.point += event.delta;
-	// 	path.smooth();
-	// 	initSelectionRectangle(path);
-	// } else if (path) {
-	//     if (path!=selectionRectangle)
-	//     {
-	// 	    path.position += event.delta;
-	// 	    selectionRectangle.position += event.delta;
-	//     }
-	//     else
-	//     {
-	// 	    selectionRectangle.position += event.delta;
-	// 	    selectionRectangle.ppath.position += event.delta;
-	//     }
-	// }
-                  ////pasta/////
-
-
-
 
 
             if (!boxSelected) {
@@ -415,12 +285,6 @@ function initializePaper() {
     		};
 
         tool.onMouseUp = function(event) {
-          //// pasta ////
-          selectionRectangleScale = null;
-          selectionRectangleRotation = null;
-          //// pasta ////
-
-
           boxSelected = false;
           mouseUpPos = event.point;
 
@@ -474,7 +338,7 @@ function initializePaper() {
                 }
               }
           }
-        }  // onMouseUp
+        };  // onMouseUp
 
         function onMouseMove(event) {
           	project.activeLayer.selected = false;
